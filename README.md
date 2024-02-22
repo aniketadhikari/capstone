@@ -1,14 +1,13 @@
 # Knowledge Base for MCCS Capstone Class
 ## Members 
-## SCP 📁 from local server to remote instance
+## Public IP
 ```
-scp -r <folder> bitnami@##.###.###.##:/htdocs/www/
+54.167.103.74
 ```
-## SCP 📄 from local server to remote instance
-```
-scp <file> bitnami@##.###.###.##:/htdocs/www/
-```
-## SSH file
+## SSH
 ```
 ssh -i lightsail.pem bitnami@##.###.###.##
 ```
+## Transfering Files from Local to Remote Instance
+
+[Instructions for Cyberduck](https://docs.bitnami.com/aws/infrastructure/lamp/administration/upload-files/#cyberduck)
