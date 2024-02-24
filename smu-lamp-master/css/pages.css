@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap');
+
+* {
+    font-family: 'Poppins', sans-serif;
+}
+
+.title {
+    background-image: linear-gradient(black, black, #151c55);
+    padding: 25px;
+    color: white;
+}
+
+.professor-body {
+    background: url('../images/blurred_Singapore_Management_University_School_of_Law_Armeninan_Street.jpg');
+    background-size: cover;
+    background-repeat: repeat-y;
+}
+
+.student-body {
+    background: url('../images/blurred-smu-student.jpg');
+    background-size: cover;
+    background-repeat: repeat-y;
+}
+
+.card-panel {
+    background-color: #151c55;
+    color: white;
+}
+
+#student-selection {
+    display: block;
+}
+
+.mail-link {
+    color: white;
+}
+
+.mail-link:hover {
+    text-decoration: underline;
+}
+
+table {
+    background-color: #151c55;
+    color: white;
+    border: #151c55 solid 20px;
+}
+
+th,
+td {
+    text-align: center;
+    border-radius: 0px;
+    padding: 20px;
+}
+
+.msg {
+    margin: 10px 0;
+    display: block;
+    color: #fff;
+    border-radius: 5px;
+    font-size: 20px;
+    padding: 10px;
+}
+
+.error-container,
+.success-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    margin: auto;
+}
+
+.error-container {
+    background-color: tomato;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.success-container {
+    background-color: lightgreen;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+input,
+textarea {
+    color: white;
+}
+
+.btn {
+    background: #5f4d1e;
+    color: rgb(255, 255, 255);
+    text-transform: capitalize;
+    font-size: 20px;
+    cursor: pointer;
+
+}
+
+.chip {
+    margin: 0px;
+    
+}
+
+select {
+    display: block;
+}
+
+.chip-link {
+    color: black;
+}
+
+.chip-link:hover {
+    font-weight: bold;
+    color: black;
+}

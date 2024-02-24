@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap');
+
+.tabs .tab a:hover {
+    background-color: white;
+    color: #151c55;
+}
+
+.tabs .tab a {
+    background-color: #151c55;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+}
+
+.navbar {
+    z-index: 10;
+    margin-bottom: 0px;
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0;
+}
