@@ -21,7 +21,6 @@
                     <div class="card-header">
                         <h1 class="text-center">Dashboard Registration</h3>
                     </div>
-                    <img src="images/profile.png" alt=""  width="100" style="align-self: center;" class="mt-4">
                     <div class="card-body">
                         <form>
                             <div class="row g-3 mt-1">
