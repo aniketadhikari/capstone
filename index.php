@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 
 </head>
-<body style="background-color: #000033;">
+<body style="background-color: #000033; color: white;">
     <div class="container mt-5">
         <div class="row justify-content-center">
             <div class="col-md-6">
@@ -33,7 +33,7 @@
                                 <input type="password" id="password" class="form-control form-control-lg" placeholder="Enter your password" required>
                             </div>
                             <div class="d-grid gap-2 col-6 mx-auto">
-                                <button class="btn-lg shadow" type="button" style="background-color: #CC0000; border: none">Log In <i class="bi bi-arrow-right-circle h4"></i></button>
+                                <button class="btn-lg shadow" type="button" style="background-color: #CC0000; border: none; color: white;">Log In <i class="bi bi-arrow-right-circle h4"></i></button>
                             </div>
                             <hr class="hr mt-4" />
                             <p class="text-center">Click here to <a href="register.php">register</a></p>
