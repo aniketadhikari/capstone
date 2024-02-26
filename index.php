@@ -36,7 +36,7 @@
                                 <button class="btn-lg shadow" type="button" style="background-color: #CC0000; border: none">Log In <i class="bi bi-arrow-right-circle h4"></i></button>
                             </div>
                             <hr class="hr mt-4" />
-                            
+                            <p class="text-center">Click here to <a href="register.php">register</a></p>
                         </form>
                     </div>
                 </div>
