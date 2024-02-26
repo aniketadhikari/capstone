@@ -21,19 +21,22 @@
                     <div class="card-header">
                         <h1 class="text-center">Dashboard Login</h3>
                     </div>
+                    <img src="images/profile.png" alt=""  width="100" style="align-self: center;" class="mt-5">
                     <div class="card-body">
                         <form>
                             <div class="mb-4 mt-4 shadow-sm">
                                 <label for="username" class="form-label">Username</label>
-                                <input type="text" id="username" class="form-control" placeholder="Enter your username" required>
+                                <input type="text" id="username" class="form-control form-control-lg" placeholder="Enter your username" required>
                             </div>
                             <div class="mb-5 mt-4 shadow-sm">
                                 <label for="password" class="form-label">Password</label>
-                                <input type="password" id="password" class="form-control" placeholder="Enter your password" required>
+                                <input type="password" id="password" class="form-control form-control-lg" placeholder="Enter your password" required>
                             </div>
                             <div class="d-grid gap-2 col-6 mx-auto">
                                 <button class="btn-lg shadow" type="button" style="background-color: #CC0000; border: none">Log In <i class="bi bi-arrow-right-circle h4"></i></button>
                             </div>
+                            <hr class="hr mt-4" />
+                            
                         </form>
                     </div>
                 </div>
