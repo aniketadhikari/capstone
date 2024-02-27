@@ -17,11 +17,11 @@
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <div class="card shadow" style="background-color: #1D1D45;">
-                    <img src="images/MCCS-logo-white.png" alt="MCCS logo" width="400" style="align-self: center;" class="mt-3 p-5">
+                    <img src="images/MCCS-logo-white.png" alt="MCCS logo" width="250" style="align-self: center;" class="mt-3 p-5">
                     <div class="card-header">
                         <h1 class="text-center">Dashboard Login</h3>
                     </div>
-                    <img src="images/profile.png" alt=""  width="100" style="align-self: center;" class="mt-5">
+                    <!-- <img src="images/profile.png" alt=""  width="100" style="align-self: center;" class="mt-5"> -->
                     <div class="card-body">
                         <form>
                             <div class="mb-4 mt-4 shadow-sm">

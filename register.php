@@ -17,13 +17,13 @@
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <div class="card shadow" style="background-color: #1D1D45;">
-                    <img src="images/MCCS-logo-white.png" alt="MCCS logo" width="400" style="align-self: center;" class="mt-1 p-5">
+                    <img src="images/MCCS-logo-white.png" alt="MCCS logo" width="250" style="align-self: center;" class="mt-1 p-5">
                     <div class="card-header">
-                        <h1 class="text-center">Dashboard Registration</h3>
+                        <h2 class="text-center">Dashboard Registration</h3>
                     </div>
                     <div class="card-body">
                         <form>
-                            <div class="row g-3 mt-1">
+                            <div class="row g-3">
                                 <div class="mb-4 mt-4 shadow-sm col">
                                     <label for="fold" class="form-label">Role</label>
                                     <input type="text" id="role" class="form-control" placeholder="Enter your role" required>
