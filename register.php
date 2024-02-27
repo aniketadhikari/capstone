@@ -1,4 +1,5 @@
 <html lang="en" style="background-color: #000033;">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,6 +13,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 
 </head>
+
 <body style="background-color: #000033; color: white;">
     <div class="container mt-5">
         <div class="row justify-content-center">
@@ -26,7 +28,19 @@
                             <div class="row g-3">
                                 <div class="mb-4 mt-4 shadow-sm col">
                                     <label for="fold" class="form-label">Role</label>
-                                    <input type="text" id="role" class="form-control" placeholder="Enter your role" required>
+                                    <div class="dropdown">
+                                        <button class="btn btn-secondary dropdown-toggle form-control" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: #CC0000; border: none; color: white;">
+                                            Role
+                                        </button>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                            <li><button class="dropdown-item" type="button">Marketing</button></li>
+                                            <li><button class="dropdown-item" type="button">Loss Prevention</button></li>
+                                            <li><button class="dropdown-item" type="button">Store Manager</button></li>
+                                            <li><button class="dropdown-item" type="button">Human Resources (HR)</button></li>
+                                            <li><button class="dropdown-item" type="button">General Manager</button></li>
+                                            <li><button class="dropdown-item" type="button">Data Researcher</button></li>
+                                        </ul>
+                                    </div>
                                 </div>
                                 <div class="mb-4 mt-4 shadow-sm col">
                                     <label for="email" class="form-label">Email</label>
@@ -53,4 +67,5 @@
         </div>
     </div>
 </body>
+
 </html>

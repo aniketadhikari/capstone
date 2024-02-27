@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 
 </head>
-<body style="background-color: #000033; color: white;">
+<body style="color: white; background-color: transparent">
     <div class="container mt-5">
         <div class="row justify-content-center">
             <div class="col-md-6">
@@ -21,10 +21,9 @@
                     <div class="card-header">
                         <h1 class="text-center">Dashboard Login</h3>
                     </div>
-                    <!-- <img src="images/profile.png" alt=""  width="100" style="align-self: center;" class="mt-5"> -->
                     <div class="card-body">
                         <form>
-                            <div class="mb-4 mt-4 shadow-sm">
+                            <div class="mb-3 mt-4 shadow-sm">
                                 <label for="username" class="form-label">Username</label>
                                 <input type="text" id="username" class="form-control form-control-lg" placeholder="Enter your username" required>
                             </div>
