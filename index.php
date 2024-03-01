@@ -32,6 +32,9 @@
                                 <label for="password" class="form-label">Password</label>
                                 <input type="password" id="password" class="form-control form-control-lg" placeholder="Enter your password" required>
                             </div>
+                            <div class="forgot-password">
+                                <a href="#">Forgot your password? Click here</a>
+                            </div>
                             <div class="d-grid gap-2 col-6 mx-auto">
                                 <button class="btn-lg shadow login-button" type="button">Log In <i class="bi bi-arrow-right-circle h4"></i></button>
                             </div>
