@@ -22,7 +22,7 @@
                 <div class="card shadow">
                 <img src="images/MCCS-logo-white.png" id="MCCS-logo" alt="MCCS logo" width="250" class="mt-3 p-5 MCCS-logo">
                     <div class="card-header">
-                        <h2 class="text-center">Dashboard Registration</h3>
+                        <h1 class="text-center">Registration</h1>
                     </div>
                     <div class="card-body">
                         <form>
@@ -52,7 +52,7 @@
                                 <label for="username" class="form-label">Username</label>
                                 <input type="text" id="username" class="form-control" placeholder="Enter your username" required>
                             </div>
-                            <div class="mb-5 mt-4 shadow-sm">
+                            <div class="mb-4 mt-4 shadow-sm">
                                 <label for="password" class="form-label">Password</label>
                                 <input type="password" id="password" class="form-control form-control" placeholder="Enter your password" required>
                             </div>
