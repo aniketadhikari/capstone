@@ -1,35 +1,30 @@
-.btn {
-    margin: 10px; /* Adjust the margin as needed */
+html {
+  background-image: url("/images/mccs-branch-colored.jpg");
+  background-size: cover;
 }
 
-a.btn { 
-    font-size: 24px;
-    background-color: red;
+body {
+  background-color: transparent;
+}
+
+.btn {
+  margin: 10px; /* Adjust the margin as needed */
+}
+
+a.btn {
+  font-size: 24px;
+  background-color: #87192a;
 }
 
 .btn-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .container {
-    min-height: 80vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
- }
-
-html {
-    background-image: url("https://cherrypoint.usmc-mccs.org/modules/media/t/a924c81802f843748ef80b77cd318f11_v1.jpg?m=638298225858570000");
-    background-size: cover;
- }
- 
- body {
-    background-color: transparent;
- }
- 
-
- /* Go to Account Settings */
-
-/* Auto layout */
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
