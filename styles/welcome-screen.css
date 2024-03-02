@@ -1,6 +1,7 @@
 html {
-  background-image: url("/images/mccs-branch-colored.jpg");
+  background-image: url("../images/mccs-branch-colored.png");
   background-size: cover;
+  position: relative;
 }
 
 body {
@@ -9,11 +10,17 @@ body {
 
 .btn {
   margin: 10px; /* Adjust the margin as needed */
+  color: white;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-evenly;
 }
 
 a.btn {
-  font-size: 24px;
-  background-color: #87192a;
+  font-size: 20px;
+  background-color: #CC0000;
+  border-radius: .5rem;
+  width: 14rem;
 }
 
 .btn-container {
@@ -27,4 +34,21 @@ a.btn {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.card {
+  background-color: rgba(29, 29, 29, 0.9);
+  color: white;
+  border-radius: 1rem;
+}
+
+h1 {
+  font-size: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.card-header {
+  text-align: center;
 }
