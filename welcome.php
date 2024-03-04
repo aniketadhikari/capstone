@@ -29,14 +29,14 @@ session_start();
    <div class="container mt-5">
       <div class="row justify-content-center">
          <div class="card shadow-lg navigation-card">
-            <div class="card-header">
-               <h1 class="text-center">Welcome!<img src="https://emojiisland.com/cdn/shop/products/Waving_Hand_Sign_Emoji_Icon_ios10_grande.png?v=1571606113" width="40px" height="40px" alt="" style="padding: 3%;"></h1> 
+            <div class="card-header mt-3 mb-3">
+               <h1 class="text-center">Welcome!<img src="https://emojiisland.com/cdn/shop/products/Waving_Hand_Sign_Emoji_Icon_ios10_grande.png?v=1571606113" width="56px" height="56px" alt="" style="padding: 3%;"></h1> 
             </div>
             <div class="card-body">
                <div class="content text-center">
                   <a href="dashboard.php" class="btn btn-dark">Dashboard <img src="images/sf-icons/dashboard.png" width="20px" height="20px" alt="Dashboard"></a>
-                  <a href="account_settings.php" class="btn btn-dark">Account Settings <img src="images/sf-icons/settings.png" width="20px" height="20px" alt="Account Settings"></a>
-                  <a href="vendor_ratings.php" class="btn btn-dark">Vendor Rating <img src="images/sf-icons/ratings.png" width="20px" height="20px" alt="Vendor Ratings"></a>
+                  <a href="settings.php" class="btn btn-dark">Account Settings <img src="images/sf-icons/settings.png" width="20px" height="20px" alt="Account Settings"></a>
+                  <a href="ratings.php" class="btn btn-dark">Vendor Rating <img src="images/sf-icons/ratings.png" width="20px" height="20px" alt="Vendor Ratings"></a>
                   <a href="stores.php" class="btn btn-dark">Stores <img src="images/sf-icons/store.png" width="20px" height="20px" alt="Stores"></a>
                   <a href="index.php" class="btn btn-dark">Logout <img src="images/sf-icons/logout.png" width="20px" height="20px" alt="Dashboard"> </a>
                </div>
