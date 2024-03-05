@@ -23,12 +23,6 @@ a.btn {
   width: 14rem;
 }
 
-.btn-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .container {
   min-height: 80vh;
   display: flex;

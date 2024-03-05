@@ -1,0 +1,38 @@
+.form-container {
+  background-image: url("images/blurred_smu_morning.jpg");
+  background-size: cover;
+}
+
+.container {
+    width: 55%;
+    color: white;
+}
+
+body {
+  background-color: #1E1E1E;
+}
+.nav-btn {
+  margin: 10px; /* Adjust the margin as needed */
+  color: white;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.sidebar {
+  height: 100%;
+  width: 20%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-color: #87192A;
+}
+
+.nav-btn {
+  margin: 20px 0px 20px 20px;
+}
+
+a.nav-btn {
+  font-size: 34px;
+  /* width: 14rem; */
+  display: block;
+}
