@@ -4,9 +4,9 @@
 
 session_start();
 // if logged in, redirect and go immediately to professor welcome page
-// if(isset($_SESSION['professor_name'])){
-//    header('location:professor_pages/professor_welcome.php'); 
-// }
+if(isset($_SESSION['id'])){
+    header('Location: welcome.php');
+}
 
 if (isset($_POST['submit'])) {
 
@@ -18,6 +18,8 @@ if (isset($_POST['submit'])) {
     $result = mysqli_query($conn, $select);
 
     if (mysqli_num_rows($result) > 0) {
+        $row = mysqli_fetch_array($result);
+        $_SESSION['id'] = $row['user_id'];
         header('Location: welcome.php');
         exit;
     } else {
@@ -51,13 +53,6 @@ if (isset($_POST['submit'])) {
                     <img src="images/MCCS-logo-white.png" id="MCCS-logo" alt="MCCS logo" width="250" class="mt-3 p-5 MCCS-logo">
                     <div class="card-header">
                         <h1 class="text-center">Dashboard Login</h3>
-                        <?php
-                            if (isset($error)) {
-                                foreach ($error as $error) {
-                                    echo '<span class="error-msg">' . $error . '</span>';
-                                };
-                            };
-                            ?>
                     </div>
                     <div class="card-body">
                         <form method="post" action="">
@@ -69,6 +64,13 @@ if (isset($_POST['submit'])) {
                                 <label for="password" class="form-label">Password</label>
                                 <input type="password" name="password" id="password" class="form-control form-control-lg" placeholder="Enter your password" required>
                             </div>
+                            <?php
+                            if (isset($error)) {
+                                foreach ($error as $error) {
+                                    echo '<div class="alert alert-danger" role="alert">' . $error . '</div>';
+                                };
+                            }
+                            ?>
                             <div class="forgot-password text-left mb-4">
                                 <p>Forgot your password? <a href="#">Click here</a></p>
                             </div>
@@ -78,6 +80,7 @@ if (isset($_POST['submit'])) {
                             <hr class="hr mt-4" />
                             <p class="text-center">Click here to <a href="register.php">register</a></p>
                         </form>
+
                     </div>
                 </div>
             </div>
