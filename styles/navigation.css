@@ -21,18 +21,14 @@ body {
 .sidebar {
   height: 100%;
   width: 20%;
-  position: absolute;
-  left: 0;
-  top: 0;
   background-color: #87192A;
 }
 
 .nav-btn {
-  margin: 20px 0px 20px 20px;
+  margin: 50px 0px 50px 40px;
 }
 
 a.nav-btn {
-  font-size: 34px;
-  /* width: 14rem; */
+  font-size: 38px;
   display: block;
 }
