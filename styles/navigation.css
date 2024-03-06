@@ -32,6 +32,14 @@ body {
 }
 
 a.nav-btn {
-  font-size: 38px;
   display: block;
+}
+
+img {
+  max-width: 80%;
+  height: auto;
+}
+
+.options {
+  width: 20%;
 }
