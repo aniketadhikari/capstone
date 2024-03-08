@@ -14,11 +14,27 @@
 
 <div class="position-fixed top-0 sidebar">
    <img src="images/MCCS-logo-white.png" alt="MCCS logo" class="MCCS-logo mx-auto mt-4 d-block">
-   <div>
-      <a href="welcome.php" class="nav-btn fs-3">Home</a>
-      <a href="dashboard.php" class="active nav-btn fs-3">Dashboard</a>
-      <a href="stores.php" class="active nav-btn fs-3">Stores</a>
-      <a href="ratings.php" class="active nav-btn fs-3">Vendor Ratings</a>
+   <div class="mt-5">
+      <div class="d-flex align-items-center pt-3 pb-4 ms-5">
+         <img src="images/sf-icons/house.png" width="24px" alt="">
+         <a href="welcome.php" class="nav-btn fs-3">Home</a>
+      </div>
+      <div class="d-flex align-items-center pt-3 pb-4 ms-5">
+         <img src="images/sf-icons/dashboard.png" width="24px" alt="">
+         <a href="dashboard.php" class="active nav-btn fs-3">Dashboard</a>
+      </div>
+      <div class="d-flex align-items-center pt-3 pb-4 ms-5">
+         <img src="images/sf-icons/ratings.png" width="24px" alt="">
+         <a href="ratings.php" class="active nav-btn fs-3">Vendor Ratings</a>
+      </div>
+      <div class="d-flex align-items-center pt-3 pb-4 ms-5">
+         <img src="images/sf-icons/store.png" width="24px" alt="">
+         <a href="stores.php" class="active nav-btn fs-3">Stores</a>
+      </div>
+      <div class="d-flex align-items-center pt-3 pb-4 ms-5">
+         <img src="images/sf-icons/settings.png" width="24px" alt="">
+         <a href="settings.php" class="active nav-btn fs-3">Account Settings</a>
+      </div>
    </div>
    <div class="options row position-fixed bottom-0">
       <div class="col-1 option"></div>

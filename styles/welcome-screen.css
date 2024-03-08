@@ -14,13 +14,17 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: space-evenly;
+  font-size: 20px;
+  border-radius: 1rem;
+  border-color: #CC0000;
+  border-width: 2px;
+  width: 14rem;
 }
 
-a.btn {
-  font-size: 20px;
+.btn:hover {
   background-color: #CC0000;
-  border-radius: .5rem;
-  width: 14rem;
+  color: white;
+  box-shadow: 10px 5px 5px black;
 }
 
 .container {
