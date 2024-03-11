@@ -16,13 +16,13 @@ body {
   justify-content: space-evenly;
   font-size: 20px;
   border-radius: 1rem;
-  border-color: #CC0000;
+  border-color: #87192A;
   border-width: 2px;
   width: 14rem;
 }
 
 .btn:hover {
-  background-color: #CC0000;
+  background-color: #87192A;
   color: white;
   box-shadow: 10px 5px 5px black;
 }
@@ -49,4 +49,11 @@ h1 {
 
 .card-header {
   text-align: center;
+}
+
+#username {
+  background-color: #87192A;
+  border-radius: 20px;
+  padding: 2%;
+  margin-left: 2%;
 }

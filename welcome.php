@@ -4,9 +4,9 @@
 
 session_start();
 
-// if (!isset($_SESSION['professor_name'])) {
-//    header('location:../index.php');
-// }
+if (!isset($_SESSION['id'])) {
+   header('index.php');
+}
 
 ?>
 
@@ -28,7 +28,10 @@ session_start();
       <div class="row justify-content-center">
          <div class="card shadow-lg navigation-card">
             <div class="card-header mt-3 mb-3">
-               <h1 class="text-center">Welcome!<img src="https://emojiisland.com/cdn/shop/products/Waving_Hand_Sign_Emoji_Icon_ios10_grande.png?v=1571606113" width="56px" height="56px" alt="" style="padding: 3%;"></h1>
+               <h1 class="text-center">Welcome
+                  <span id="username"><?php echo $_SESSION['username'] ?></span>
+                  <img src="https://emojiisland.com/cdn/shop/products/Waving_Hand_Sign_Emoji_Icon_ios10_grande.png?v=1571606113" width="56px" height="56px" alt="" style="padding: 3%;">
+               </h1>
             </div>
             <div class="card-body">
                <div class="content text-center">

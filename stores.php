@@ -1,3 +1,19 @@
+<?php
+
+@include 'config.php';
+session_start();
+
+if (!isset($_SESSION['id'])) {
+    header('index.php');
+}
+
+$store_select = "SELECT * FROM Stores";
+$store_result = mysqli_query($conn, $store_select);
+$stores = mysqli_fetch_all($store_result, MYSQLI_ASSOC);
+mysqli_free_result($store_result);
+
+?>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,4 +32,22 @@
     <?php
     @include 'navigation.php';
     ?>
+
+    <div class="container">
+        <div class="row row-cols-4 row-cols-md-3 g-4">
+            <?php foreach ($stores as $store) : ?>
+                <div class="col-md-4 ">
+                    <div id="store" class="card text-white">
+                        <div class="card-body">
+                            <h5 class="card-title"><?php echo $store['site_ID']; ?></h5>
+                            <p class="card-text"><?php echo $store['store_name']; ?></p>
+                            <div class="d-flex justify-content-center">
+                                <a href="#" class="store-btn">Rate</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        </div>
+    </div>
 </body>

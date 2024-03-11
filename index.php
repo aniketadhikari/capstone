@@ -20,6 +20,7 @@ if (isset($_POST['submit'])) {
     if (mysqli_num_rows($result) > 0) {
         $row = mysqli_fetch_array($result);
         $_SESSION['id'] = $row['user_id'];
+        $_SESSION['username'] = $row['username'];
         header('Location: welcome.php');
         exit;
     } else {
