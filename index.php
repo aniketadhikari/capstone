@@ -1,11 +1,10 @@
 <?php
 
 @include 'config.php';
-
 session_start();
 // if logged in, redirect and go immediately to professor welcome page
-if(isset($_SESSION['id'])){
-    header('Location: welcome.php');
+if (isset($_SESSION['id'])) {
+    header('location:welcome.php');
 }
 
 if (isset($_POST['submit'])) {
@@ -21,7 +20,7 @@ if (isset($_POST['submit'])) {
         $row = mysqli_fetch_array($result);
         $_SESSION['id'] = $row['user_id'];
         $_SESSION['username'] = $row['username'];
-        header('Location: welcome.php');
+        header('location:welcome.php');
         exit;
     } else {
         $error[] = 'incorrect email or password!';

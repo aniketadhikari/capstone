@@ -1,3 +1,20 @@
+<?php
+
+@include 'config.php';
+
+session_start();
+
+if (!isset($_SESSION['id'])) {
+    header('location:index.php');
+}
+
+$kpi_select = "SELECT * FROM KPI WHERE MERCHANDISING_YEAR=2008 AND MERCHANDISING_PERIOD=5 LIMIT 0, 100";
+$kpi_result = mysqli_query($conn, $kpi_select);
+$kpis = mysqli_fetch_all($kpi_result, MYSQLI_ASSOC);
+mysqli_free_result($kpi_result);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,7 +44,8 @@
                         <div class="card-header">Header</div>
                         <div class="card-body">
                             <h5 class="card-title">Dark card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <svg width="800" height="200"></svg>
+                            <?php @include 'scripts/visualizations.php'; ?>
                         </div>
                     </div>
                 </div>
@@ -78,6 +96,21 @@
                             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                         </div>
                     </div>
+                </div>
+            </div>
+            <div>
+                <div class="row row-cols-4 row-cols-md-3 g-4">
+                    <?php foreach ($kpis as $kpi) : ?>
+                        <div class="col-md-4 ">
+                            <div id="store" class="card store<?php echo $kpi['LOCATION_SKEY']; ?> text-white" style="width: 250px;">
+                                <div class="card-body">
+                                    <h5 class="card-title"><?php echo $kpi['LOCATION_SKEY']; ?></h5>
+                                    <p class="card-text"><?php echo $kpi['MERCHANDISING_YEAR']; ?></p>
+                                    <p class="card-text"><?php echo $kpi['MERCHANDISING_PERIOD']; ?></p>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
                 </div>
             </div>
         </div>

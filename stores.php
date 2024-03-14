@@ -1,10 +1,11 @@
 <?php
 
 @include 'config.php';
+
 session_start();
 
 if (!isset($_SESSION['id'])) {
-    header('index.php');
+    header('location:index.php');
 }
 
 $store_select = "SELECT * FROM Stores";
@@ -33,19 +34,10 @@ mysqli_free_result($store_result);
         <div class="row row-cols-4 row-cols-md-3 g-4">
             <?php foreach ($stores as $store) : ?>
                 <div class="col-md-4 ">
-                    <div id="store" class="card text-white">
+                    <div id="store" class="card store<?php echo $store['site_ID']; ?> text-white">
                         <div class="card-body">
                             <h5 class="card-title"><?php echo $store['site_ID']; ?></h5>
                             <p class="card-text"><?php echo $store['store_name']; ?></p>
-                            <div class="d-flex justify-content-center">
-                                <select class="form-select">
-                                    <option value="1">1 star</option>
-                                    <option value="2">2 stars</option>
-                                    <option value="3">3 stars</option>
-                                    <option value="4">4 stars</option>
-                                    <option value="5">5 stars</option>
-                                </select>
-                            </div>
                         </div>
                     </div>
                 </div>
