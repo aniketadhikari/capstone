@@ -24,10 +24,6 @@ mysqli_free_result($store_result);
     <link rel="stylesheet" href="styles/navigation.css?1">
 </head>
 
-<header class="text-center display-3 mx-auto">
-    <p>Stores</p>
-</header>
-
 <body>
     <?php
     @include 'navigation.php';
@@ -42,7 +38,13 @@ mysqli_free_result($store_result);
                             <h5 class="card-title"><?php echo $store['site_ID']; ?></h5>
                             <p class="card-text"><?php echo $store['store_name']; ?></p>
                             <div class="d-flex justify-content-center">
-                                <a href="#" class="store-btn">Rate</a>
+                                <select class="form-select">
+                                    <option value="1">1 star</option>
+                                    <option value="2">2 stars</option>
+                                    <option value="3">3 stars</option>
+                                    <option value="4">4 stars</option>
+                                    <option value="5">5 stars</option>
+                                </select>
                             </div>
                         </div>
                     </div>
