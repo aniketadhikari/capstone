@@ -44,7 +44,7 @@ mysqli_free_result($kpi_result);
                         <div class="card-header">Header</div>
                         <div class="card-body">
                             <h5 class="card-title">Dark card title</h5>
-                            <svg width="800" height="200"></svg>
+                            <svg class="kpi-1" width="800" height="200"></svg>
                             <?php @include 'scripts/visualizations.php'; ?>
                         </div>
                     </div>
@@ -96,21 +96,6 @@ mysqli_free_result($kpi_result);
                             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div>
-                <div class="row row-cols-4 row-cols-md-3 g-4">
-                    <?php foreach ($kpis as $kpi) : ?>
-                        <div class="col-md-4 ">
-                            <div id="store" class="card store<?php echo $kpi['LOCATION_SKEY']; ?> text-white" style="width: 250px;">
-                                <div class="card-body">
-                                    <h5 class="card-title"><?php echo $kpi['LOCATION_SKEY']; ?></h5>
-                                    <p class="card-text"><?php echo $kpi['MERCHANDISING_YEAR']; ?></p>
-                                    <p class="card-text"><?php echo $kpi['MERCHANDISING_PERIOD']; ?></p>
-                                </div>
-                            </div>
-                        </div>
-                    <?php endforeach; ?>
                 </div>
             </div>
         </div>
