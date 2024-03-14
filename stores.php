@@ -12,9 +12,6 @@ $store_result = mysqli_query($conn, $store_select);
 $stores = mysqli_fetch_all($store_result, MYSQLI_ASSOC);
 mysqli_free_result($store_result);
 
-// search for a specific store
-// SELECT * FROM STORES WHERE SITE_ID = '$site_id'... 
-
 ?>
 
 <head>
