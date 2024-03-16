@@ -30,7 +30,7 @@ mysqli_free_result($store_result);
     @include 'navigation.php';
     ?>
 
-    <div class="container">
+    <div id="stores" class="container">
         <div class="row row-cols-4 row-cols-md-3 g-4">
             <?php foreach ($stores as $store) : ?>
                 <div class="col-md-4 ">

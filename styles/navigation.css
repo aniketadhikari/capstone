@@ -25,6 +25,7 @@ body {
   border-top-right-radius: 1%;
   border-bottom-right-radius: 1%;
   box-shadow: 3%;
+  z-index: 1;
 }
 
 .nav-btn {
