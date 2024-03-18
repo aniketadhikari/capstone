@@ -45,17 +45,19 @@ mysqli_free_result($kpi_result);
                             <h5 class="card-title">Units Sold Per Month (2022 - 2024)</h5>
                         </div>
                         <div class="card-body">
-                            <svg class="kpi-1 .img-fluid" width='550' height="250"></svg>
+                            <svg class="unitsSold" width='550' height="250"></svg>
                             <?php @include 'scripts/unitsSoldPerMonth.php'; ?>
                         </div>
                     </div>
                 </div>
                 <div class="col-6">
                     <div id="widget" class="card text-white h-100">
-                        <div class="card-header">Header</div>
+                        <div class="card-header">
+                            <h5 class="card-title">Revenue and Costs Per Month (2022 - 2024)</h5>
+                        </div>
                         <div class="card-body">
-                            <h5 class="card-title">Dark card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <svg class="kpi-1 .img-fluid" width='550' height="250"></svg>
+                            <?php @include 'scripts/revenueVsCost.php'; ?>
                         </div>
                     </div>
                 </div>

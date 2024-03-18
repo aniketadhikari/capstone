@@ -2,7 +2,7 @@
 
 $kpi_select = "SELECT  MERCHANDISING_PERIOD as month, 
 MERCHANDISING_YEAR as year, 
-SUM(SALESU) as sales FROM KPI 
+SUM(SALESR) as revenue, SUM(SALESC) as cost FROM KPI 
 group by MERCHANDISING_YEAR, MERCHANDISING_PERIOD 
 order by MERCHANDISING_YEAR, MERCHANDISING_PERIOD;";
 $kpi_result = mysqli_query($conn, $kpi_select);
@@ -17,13 +17,14 @@ foreach ($kpis as $kpi) {
     $month = $kpi['month'];
     $year = $kpi['year'];
     $date = sprintf("%04d-%02d", $year, $month);
-    $count = intval($kpi['sales']);
+    $revenue = intval($kpi['revenue']);
+    $cost = intval($kpi['cost']);
     $data[] = array(
         'date' => $date,
-        'value' => $count  // Convert value to integer
+        'value' => $cost  // Convert value to integer
     );
 }
-$data_json = json_encode($data);
+$rvc_data_json = json_encode($data);
 ?>
 
 <!-- D3 package -->
@@ -56,51 +57,51 @@ $data_json = json_encode($data);
 
 <!-- Code for visualization -->
 <script type="text/javascript">
-    const data = <?php echo $data_json; ?>;
+    const rvc_data = <?php echo $rvc_data_json; ?>;
 
     // Parse the date/time
-    const parseDate = d3.timeParse('%Y-%m');
+    const rvc_parseDate = d3.timeParse('%Y-%m');
 
     // Set up the kpi
-    const unitsSold = d3.select(".unitsSold"),
-        margin = {
+    const rvc = d3.select(".kpi-1"),
+        rvc_margin = {
             top: 20,
             right: 20,
             bottom: 30,
             left: 80
         },
-        width = +unitsSold.attr("width") - margin.left - margin.right,
-        height = +unitsSold.attr("height") - margin.top - margin.bottom,
-        g = unitsSold.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+        rvc_width = +rvc.attr("width") - rvc_margin.left - rvc_margin.right,
+        rvc_height = +rvc.attr("height") - rvc_margin.top - rvc_margin.bottom,
+        rvc_g = rvc.append("g").attr("transform", "translate(" + rvc_margin.left + "," + rvc_margin.top + ")");
 
     // Set up the scales
-    const x = d3.scaleTime()
-        .rangeRound([0, width])
-        .domain(d3.extent(data, d => parseDate(d.date)));
+    const rvc_x = d3.scaleTime()
+        .rangeRound([0, rvc_width])
+        .domain(d3.extent(rvc_data, d => rvc_parseDate(d.date)));
 
-    const y = d3.scaleLinear()
-        .rangeRound([height, 0])
-        .domain([d3.min(data, d => d.value), d3.max(data, d => d.value)]);
+    const rvc_y = d3.scaleLinear()
+        .rangeRound([rvc_height, 0])
+        .domain([0, d3.max(rvc_data, d => d.value)]);
 
     // Define the line
-    const line = d3.line()
-        .x(d => x(parseDate(d.date)))
-        .y(d => y(d.value));
+    const rvc_line = d3.line()
+        .x(d => rvc_x(rvc_parseDate(d.date)))
+        .y(d => rvc_y(d.value));
 
     // Draw the line
-    g.append("path")
-        .datum(data)
+    rvc_g.append("path")
+        .datum(rvc_data)
         .attr("class", "line")
-        .attr("d", line);
+        .attr("d", rvc_line);
 
     // Draw the x-axis
-    g.append("g")
+    rvc_g.append("g")
         .attr("class", "axis")
-        .attr("transform", "translate(0," + height + ")")
-        .call(d3.axisBottom(x));
+        .attr("transform", "translate(0," + rvc_height + ")")
+        .call(d3.axisBottom(rvc_x));
 
     // Draw the y-axis
-    g.append("g")
+    rvc_g.append("g")
         .attr("class", "axis")
-        .call(d3.axisLeft(y).ticks(5));
+        .call(d3.axisLeft(rvc_y).ticks(5));
 </script>
