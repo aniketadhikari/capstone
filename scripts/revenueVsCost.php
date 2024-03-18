@@ -21,7 +21,8 @@ foreach ($kpis as $kpi) {
     $cost = intval($kpi['cost']);
     $data[] = array(
         'date' => $date,
-        'value' => $cost  // Convert value to integer
+        'cost' => $cost,
+        'revenue' => $revenue
     );
 }
 $rvc_data_json = json_encode($data);
@@ -51,6 +52,16 @@ $rvc_data_json = json_encode($data);
         fill: none;
         shape-rendering: optimizeSpeed;
     }
+
+    .bar-cost {
+        fill: red;
+        /* Set the color of cost bars to red */
+    }
+
+    .bar-revenue {
+        fill: green;
+        /* Set the color of revenue bars to green */
+    }
 </style>
 
 
@@ -63,7 +74,7 @@ $rvc_data_json = json_encode($data);
     const rvc_parseDate = d3.timeParse('%Y-%m');
 
     // Set up the kpi
-    const rvc = d3.select(".kpi-1"),
+    const rvc = d3.select(".rvc"),
         rvc_margin = {
             top: 20,
             right: 20,
@@ -73,26 +84,45 @@ $rvc_data_json = json_encode($data);
         rvc_width = +rvc.attr("width") - rvc_margin.left - rvc_margin.right,
         rvc_height = +rvc.attr("height") - rvc_margin.top - rvc_margin.bottom,
         rvc_g = rvc.append("g").attr("transform", "translate(" + rvc_margin.left + "," + rvc_margin.top + ")");
+    // Calculate the range of dates in the dataset
+    const dates = rvc_data.map(d => rvc_parseDate(d.date));
+    const startDate = d3.min(dates);
+    const endDate = d3.max(dates);
 
-    // Set up the scales
-    const rvc_x = d3.scaleTime()
+    // Calculate the ticks, spaced out by 6 months
+    const ticks = [];
+    let currentDate = new Date(startDate);
+    while (currentDate < endDate) {
+        ticks.push(currentDate);
+        currentDate = new Date(currentDate.getFullYear(), currentDate.getMonth() + 6, 1);
+    }
+
+    const rvc_x = d3.scaleBand()
         .rangeRound([0, rvc_width])
-        .domain(d3.extent(rvc_data, d => rvc_parseDate(d.date)));
+        .domain(ticks.map(d => (d.getMonth() + 1) + '/' + d.getFullYear()))
+        .padding(0.2);
 
     const rvc_y = d3.scaleLinear()
         .rangeRound([rvc_height, 0])
-        .domain([0, d3.max(rvc_data, d => d.value)]);
+        .domain([0, d3.max(rvc_data, d => Math.max(d.revenue, d.cost))]); // Adjust domain for both revenue and cost
 
-    // Define the line
-    const rvc_line = d3.line()
-        .x(d => rvc_x(rvc_parseDate(d.date)))
-        .y(d => rvc_y(d.value));
+    rvc_g.selectAll(".bar-revenue")
+        .data(rvc_data)
+        .enter().append("rect")
+        .attr("class", "bar-revenue")
+        .attr("x", d => rvc_x((rvc_parseDate(d.date).getMonth() + 1) + '/' + rvc_parseDate(d.date).getFullYear()))
+        .attr("y", d => rvc_y(d.revenue))
+        .attr("width", 20) // Adjust width for bar separation
+        .attr("height", d => rvc_height - rvc_y(d.revenue));
 
-    // Draw the line
-    rvc_g.append("path")
-        .datum(rvc_data)
-        .attr("class", "line")
-        .attr("d", rvc_line);
+    // rvc_g.selectAll(".bar-cost")
+    //     .data(rvc_data)
+    //     .enter().append("rect")
+    //     .attr("class", "bar-cost")
+    //     .attr("x", d => rvc_x(rvc_parseDate(d.date))) // Adjust x position for separation
+    //     .attr("y", d => rvc_y(d.cost))
+    //     .attr("width", rvc_x.bandwidth() / 2) // Adjust width for bar separation
+    //     .attr("height", d => rvc_height - rvc_y(d.cost));
 
     // Draw the x-axis
     rvc_g.append("g")
