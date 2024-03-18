@@ -44,7 +44,7 @@ mysqli_free_result($kpi_result);
                         <div class="card-header">Header</div>
                         <div class="card-body">
                             <h5 class="card-title">Dark card title</h5>
-                            <svg class="kpi-1" width="800" height="200"></svg>
+                            <svg class="kpi-1" width="870" height="200"></svg>
                             <?php @include 'scripts/visualizations.php'; ?>
                         </div>
                     </div>

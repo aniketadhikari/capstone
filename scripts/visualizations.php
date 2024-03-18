@@ -19,7 +19,7 @@ foreach ($kpis as $kpi) {
     $date = sprintf("%04d-%02d", $year, $month);
     $count = intval($kpi['sales']);
     $data[] = array(
-        'date' => $date ,
+        'date' => $date,
         'value' => $count  // Convert value to integer
     );
 }
@@ -60,7 +60,6 @@ $data_json = json_encode($data);
     
     const data = <?php echo $data_json; ?>;
 
-
     // Parse the date/time
     const parseDate = d3.timeParse('%Y-%m');
 
@@ -70,7 +69,7 @@ $data_json = json_encode($data);
             top: 20,
             right: 20,
             bottom: 30,
-            left: 40
+            left: 60
         },
         width = +kpi.attr("width") - margin.left - margin.right,
         height = +kpi.attr("height") - margin.top - margin.bottom,
@@ -83,7 +82,7 @@ $data_json = json_encode($data);
 
     const y = d3.scaleLinear()
         .rangeRound([height, 0])
-        .domain([0, d3.max(data, d => d.value)]);
+        .domain([d3.min(data, d => d.value), d3.max(data, d => d.value)]);
 
     // Define the line
     const line = d3.line()
