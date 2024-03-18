@@ -45,7 +45,7 @@ mysqli_free_result($kpi_result);
                             <h5 class="card-title">Units Sold Per Month (2022 - 2024)</h5>
                         </div>
                         <div class="card-body">
-                            <svg class="unitsSold" width='550' height="250"></svg>
+                            <svg class="unitsSold img-fluid" width='550' height="250"></svg>
                             <?php @include 'scripts/unitsSoldPerMonth.php'; ?>
                         </div>
                     </div>
@@ -56,7 +56,7 @@ mysqli_free_result($kpi_result);
                             <h5 class="card-title">Revenue and Costs Per Month (2022 - 2024)</h5>
                         </div>
                         <div class="card-body">
-                            <svg class="kpi-1 .img-fluid" width='550' height="250"></svg>
+                            <svg class="rvc img-fluid" width='550' height="250"></svg>
                             <?php @include 'scripts/revenueVsCost.php'; ?>
                         </div>
                     </div>
