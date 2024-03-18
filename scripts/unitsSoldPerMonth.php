@@ -2,7 +2,7 @@
 
 $kpi_select = "SELECT  MERCHANDISING_PERIOD as month, 
 MERCHANDISING_YEAR as year, 
-COUNT(*) as sales FROM KPI 
+SUM(SALESU) as sales FROM KPI 
 group by MERCHANDISING_YEAR, MERCHANDISING_PERIOD 
 order by MERCHANDISING_YEAR, MERCHANDISING_PERIOD;";
 $kpi_result = mysqli_query($conn, $kpi_select);
@@ -40,15 +40,14 @@ $data_json = json_encode($data);
 
     /* Style the axis */
     .axis {
-        font-family: Arial, sans-serif;
-        font-size: 12px;
+        font-family: var(--bs-body-font-family);
+        font-size: 10px;
     }
 
     /* Style the axis lines */
     .axis path,
     .axis line {
         fill: none;
-        stroke: #000;
         shape-rendering: optimizeSpeed;
     }
 </style>
@@ -57,7 +56,6 @@ $data_json = json_encode($data);
 
 <!-- Code for visualization -->
 <script type="text/javascript">
-    
     const data = <?php echo $data_json; ?>;
 
     // Parse the date/time
@@ -69,7 +67,7 @@ $data_json = json_encode($data);
             top: 20,
             right: 20,
             bottom: 30,
-            left: 60
+            left: 80
         },
         width = +kpi.attr("width") - margin.left - margin.right,
         height = +kpi.attr("height") - margin.top - margin.bottom,

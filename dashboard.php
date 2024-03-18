@@ -39,17 +39,18 @@ mysqli_free_result($kpi_result);
     <div>
         <div id="screen" class="container mt-2 mb-2">
             <div class="row row-cols-1 mb-5 mt-5">
-                <div class="col-9">
+                <div class="col-6">
                     <div id="widget" class="card text-white h-100">
-                        <div class="card-header">Header</div>
+                        <div class="card-header">
+                            <h5 class="card-title">Units Sold Per Month (2022 - 2024)</h5>
+                        </div>
                         <div class="card-body">
-                            <h5 class="card-title">Dark card title</h5>
-                            <svg class="kpi-1" width="870" height="200"></svg>
-                            <?php @include 'scripts/visualizations.php'; ?>
+                            <svg class="kpi-1 .img-fluid" width='550' height="250"></svg>
+                            <?php @include 'scripts/unitsSoldPerMonth.php'; ?>
                         </div>
                     </div>
                 </div>
-                <div class="col-3">
+                <div class="col-6">
                     <div id="widget" class="card text-white h-100">
                         <div class="card-header">Header</div>
                         <div class="card-body">
