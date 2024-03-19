@@ -21,10 +21,23 @@ if (!isset($_SESSION['id'])) {
     <link rel="stylesheet" href="styles/sidebar.css?1">
     <title>MCX Store Directory</title>
 </head>
+<style>
+    #overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.75);
+        z-index: 1;
+        display: none;
+    }
+</style>
 
 
 
 <body>
+    <div id="overlay"></div>
     <?php
     @include 'navigation.php';
     ?>

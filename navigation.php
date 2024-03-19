@@ -8,12 +8,24 @@
    <link rel="stylesheet" href="styles/sidebar.css">
    </head>
 
+   <style>
+       #overlay {
+           position: fixed;
+           top: 0;
+           left: 0;
+           width: 100%;
+           height: 100%;
+           background-color: rgba(0, 0, 0, 0.75);
+           z-index: 1;
+           display: none;
+       }
+   </style>
 
 
 
 
    <body>
-
+       <div id="overlay"></div>
        <div class="bigbox">
            <input type="checkbox" id="checkbox" />
            <label for="checkbox">
@@ -68,8 +80,8 @@
                        <span>Vendor Ratings</span>
                    </a>
                </li>
-               <div class="icon-bar row p-5 mt-3">
-                   <div class="col-6 option">
+               <div class="icon-bar row" style="padding-top: 95%">
+                   <div class="col-6 option"
                        <a href="settings.php">
                            <img class="image-options d-block mx-auto" src="images/sf-icons/profile.png" width="24px" alt="">
                        </a>
