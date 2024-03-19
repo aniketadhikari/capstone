@@ -5,7 +5,7 @@
 session_start();
 
 if (!isset($_SESSION['id'])) {
-   header('location:index.php');
+    header('location:index.php');
 }
 
 if (isset($_POST['submit'])) {
@@ -46,62 +46,78 @@ if (isset($_POST['submit'])) {
 
 </head>
 
-<body>
-    <div class="container mt-5">
-        <div class="row justify-content-center">
-            <div class="col-md-6">
-                <div class="card shadow">
-                    <img src="images/MCCS-logo-white.png" id="MCCS-logo" alt="MCCS logo" width="250" class="mt-3 p-5 MCCS-logo">
-                    <div class="card-header">
-                        <h1 class="text-center">Registration</h1>
-                    </div>
-                    <div class="card-body">
-                        <form action="" method="post">
-                            <div class="row g-3">
-                                <div class="mb-4 mt-4 shadow-sm col">
-                                    <label for="fold" class="form-label">Role</label>
-                                    <div class="dropdown">
-                                        <select class="form-select" aria-label="Default select example" name="user_type" style="display: inline;">
-                                            <option value="marketing">Marketing</option>
-                                            <option value="loss prevention">Loss Prevention</option>
-                                            <option value="store manager">Store Manager</option>
-                                            <option value="human resources">Human Resources (HR)</option>
-                                            <option value="general manager">General Manager</option>
-                                            <option value="data researcher">Data Researcher</option>
-                                        </select>
+<style>
+    /* Style for the overlay */
+    .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        /* Semi-transparent black */
+        z-index: 2;
+        /* Ensure it's on top of other elements */
+        display: none;
+        /* Initially hidden */
+    }
+</style>
+    <body>
+        <div class="container mt-5">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div class="card shadow">
+                        <img src="images/MCCS-logo-white.png" id="MCCS-logo" alt="MCCS logo" width="250" class="mt-3 p-5 MCCS-logo">
+                        <div class="card-header">
+                            <h1 class="text-center">Registration</h1>
+                        </div>
+                        <div class="card-body">
+                            <form action="" method="post">
+                                <div class="row g-3">
+                                    <div class="mb-4 mt-4 shadow-sm col">
+                                        <label for="fold" class="form-label">Role</label>
+                                        <div class="dropdown">
+                                            <select class="form-select" aria-label="Default select example" name="user_type" style="display: inline;">
+                                                <option value="marketing">Marketing</option>
+                                                <option value="loss prevention">Loss Prevention</option>
+                                                <option value="store manager">Store Manager</option>
+                                                <option value="human resources">Human Resources (HR)</option>
+                                                <option value="general manager">General Manager</option>
+                                                <option value="data researcher">Data Researcher</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="mb-4 mt-4 shadow-sm col">
+                                        <label for="email" class="form-label">Email</label>
+                                        <input name="email" type="email" id="email" class="form-control" placeholder="Enter your email address" required>
                                     </div>
                                 </div>
-                                <div class="mb-4 mt-4 shadow-sm col">
-                                    <label for="email" class="form-label">Email</label>
-                                    <input name="email" type="email" id="email" class="form-control" placeholder="Enter your email address" required>
+                                <div class="mb-4 shadow-sm">
+                                    <label for="username" class="form-label">Username</label>
+                                    <input name="username" type="text" id="username" class="form-control" placeholder="Enter your username" required>
                                 </div>
-                            </div>
-                            <div class="mb-4 shadow-sm">
-                                <label for="username" class="form-label">Username</label>
-                                <input name="username" type="text" id="username" class="form-control" placeholder="Enter your username" required>
-                            </div>
-                            <div class="mb-4 mt-4 shadow-sm">
-                                <label for="password" class="form-label">Password</label>
-                                <input name="password" type="password" id="password" class="form-control form-control" placeholder="Enter your password" required>
-                            </div>
-                            <div class="d-grid gap-2 col-6 mx-auto">
-                                <button class="btn-lg shadow login-button" type="submit" name="submit">Register <i class="bi bi-arrow-right-circle h4"></i></button>
-                                <?php
-                                if (isset($error)) {
-                                    foreach ($error as $error) {
-                                        echo '<div class="alert alert-danger" role="alert">' . $error . '</div>';
-                                    };
-                                }
-                                ?>
-                            </div>
-                            <hr class="hr mt-4" />
-                            <p class="text-center">Click here to <a href="index.php">login</a></p>
-                        </form>
+                                <div class="mb-4 mt-4 shadow-sm">
+                                    <label for="password" class="form-label">Password</label>
+                                    <input name="password" type="password" id="password" class="form-control form-control" placeholder="Enter your password" required>
+                                </div>
+                                <div class="d-grid gap-2 col-6 mx-auto">
+                                    <button class="btn-lg shadow login-button" type="submit" name="submit">Register <i class="bi bi-arrow-right-circle h4"></i></button>
+                                    <?php
+                                    if (isset($error)) {
+                                        foreach ($error as $error) {
+                                            echo '<div class="alert alert-danger" role="alert">' . $error . '</div>';
+                                        };
+                                    }
+                                    ?>
+                                </div>
+                                <hr class="hr mt-4" />
+                                <p class="text-center">Click here to <a href="index.php">login</a></p>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</body>
+    </body>
 
 </html>

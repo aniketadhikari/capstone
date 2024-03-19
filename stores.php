@@ -1,19 +1,3 @@
-<?php
-
-@include 'config.php';
-
-session_start();
-
-if (!isset($_SESSION['id'])) {
-    header('location:index.php');
-}
-
-$store_select = "SELECT * FROM Stores";
-$store_result = mysqli_query($conn, $store_select);
-$stores = mysqli_fetch_all($store_result, MYSQLI_ASSOC);
-mysqli_free_result($store_result);
-
-?>
 
 <head>
     <meta charset="UTF-8">
@@ -22,7 +6,7 @@ mysqli_free_result($store_result);
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="styles/pages.css?1">
-    <link rel="stylesheet" href="styles/navigation.css?1">
+    <link rel="stylesheet" href="styles/sidebar.css?1">
 </head>
 
 <body>

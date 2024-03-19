@@ -27,12 +27,26 @@ mysqli_free_result($kpi_result);
     <link rel="stylesheet" href="styles/pages.css?1">
     <link rel="stylesheet" href="styles/navigation.css?1">
 </head>
+<style>
+    #overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.75);
+        z-index: 1;
+        display: none;
+    }
+</style>
 
 <header class="text-center display-3 mx-auto">
     <p>Dashboard</p>
 </header>
 
+
 <body>
+    <div id="overlay"></div>
     <?php
     @include 'navigation.php';
     ?>
@@ -93,14 +107,14 @@ mysqli_free_result($kpi_result);
                 </div>
             </div>
             <div id="widget" class="card text-white h-100">
-                        <div class="card-header">
-                            <h5 class="card-title">Revenue and Costs Per Month (2022 - 2024)</h5>
-                        </div>
-                        <div class="card-body">
-                            <svg class="rvc img-fluid" width='1200' height="300"></svg>
-                            <?php @include 'scripts/revenueVsCost.php'; ?>
-                        </div>
-                    </div>
+                <div class="card-header">
+                    <h5 class="card-title">Revenue and Costs Per Month (2022 - 2024)</h5>
+                </div>
+                <div class="card-body">
+                    <svg class="rvc img-fluid" width='1200' height="300"></svg>
+                    <?php @include 'scripts/revenueVsCost.php'; ?>
+                </div>
+            </div>
         </div>
     </div>
     <!-- Bootstrap JS -->

@@ -5,7 +5,7 @@
 session_start();
 
 if (!isset($_SESSION['id'])) {
-   header('location:index.php');
+    header('location:index.php');
 }
 
 ?>
@@ -17,6 +17,8 @@ if (!isset($_SESSION['id'])) {
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/pages.css?1">
+    <link rel="stylesheet" href="styles/sidebar.css?1">
     <title>MCX Store Directory</title>
 </head>
 
@@ -27,16 +29,16 @@ if (!isset($_SESSION['id'])) {
     @include 'navigation.php';
     ?>
 
-<main class="content">
+    <main class="content">
         <div class="search-container">
             <div class="search-box">
                 <input type="text" class="search-bar" placeholder="Search...">
                 <i class="fa fa-search search-icon"></i> <!-- Example using FontAwesome -->
             </div>
         </div>
-        
+
         <div class="filter-container">
-            <label for="location">Location: 
+            <label for="location">Location:
 
                 <select name="location" id="location" class="search-select" style="background-color: #555; color: white;">
                     <!-- Assume options are generated dynamically -->
@@ -92,7 +94,7 @@ if (!isset($_SESSION['id'])) {
                     <option value="WY">Wyoming</option>
                 </select>
             </label>
-            <label for="sort">Sort By: 
+            <label for="sort">Sort By:
                 <select name="sort" id="sort" class="search-select" style="background-color: #555; color: white;">
                     <!-- Assume options are generated dynamically -->
                     <option value="name-asc">Name (A to Z)</option>
@@ -172,7 +174,7 @@ if (!isset($_SESSION['id'])) {
                 </div>
             </div>
         </div>
-        
+
 
         <div class="pagination">
             <!-- Pagination buttons go here -->
@@ -184,7 +186,7 @@ if (!isset($_SESSION['id'])) {
             <button class="page-number">Next</button>
             <!-- etc. -->
         </div>
-        </main>
+    </main>
 
 </body>
 
