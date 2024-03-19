@@ -39,7 +39,7 @@ mysqli_free_result($kpi_result);
     <div>
         <div id="screen" class="container mt-2 mb-2">
             <div class="row row-cols-1 mb-5 mt-5">
-                <div class="col-6">
+                <div class="col-9">
                     <div id="widget" class="card text-white h-100">
                         <div class="card-header">
                             <h5 class="card-title">Units Sold Per Month (2022 - 2024)</h5>
@@ -50,16 +50,7 @@ mysqli_free_result($kpi_result);
                         </div>
                     </div>
                 </div>
-                <div class="col-6">
-                    <div id="widget" class="card text-white h-100">
-                        <div class="card-header">
-                            <h5 class="card-title">Revenue and Costs Per Month (2022 - 2024)</h5>
-                        </div>
-                        <div class="card-body">
-                            <svg class="rvc img-fluid" width='550' height="250"></svg>
-                            <?php @include 'scripts/revenueVsCost.php'; ?>
-                        </div>
-                    </div>
+                <div class="col-3">
                 </div>
             </div>
             <hr>
@@ -101,6 +92,15 @@ mysqli_free_result($kpi_result);
                     </div>
                 </div>
             </div>
+            <div id="widget" class="card text-white h-100">
+                        <div class="card-header">
+                            <h5 class="card-title">Revenue and Costs Per Month (2022 - 2024)</h5>
+                        </div>
+                        <div class="card-body">
+                            <svg class="rvc img-fluid" width='1200' height="300"></svg>
+                            <?php @include 'scripts/revenueVsCost.php'; ?>
+                        </div>
+                    </div>
         </div>
     </div>
     <!-- Bootstrap JS -->

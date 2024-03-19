@@ -62,6 +62,20 @@ $rvc_data_json = json_encode($data);
         fill: green;
         /* Set the color of revenue bars to green */
     }
+
+    .bar-label-cost {
+        fill: white;
+        font-size: 12px;
+        writing-mode: vertical-rl;
+        text-orientation: mixed;
+    }
+
+    .bar-label-revenue {
+        fill: white;
+        font-size: 12px;
+        writing-mode: vertical-rl;
+        text-orientation: mixed;
+    }
 </style>
 
 
@@ -79,27 +93,17 @@ $rvc_data_json = json_encode($data);
             top: 20,
             right: 20,
             bottom: 30,
-            left: 80
+            left: 60
         },
         rvc_width = +rvc.attr("width") - rvc_margin.left - rvc_margin.right,
         rvc_height = +rvc.attr("height") - rvc_margin.top - rvc_margin.bottom,
         rvc_g = rvc.append("g").attr("transform", "translate(" + rvc_margin.left + "," + rvc_margin.top + ")");
-    // Calculate the range of dates in the dataset
-    const dates = rvc_data.map(d => rvc_parseDate(d.date));
-    const startDate = d3.min(dates);
-    const endDate = d3.max(dates);
 
-    // Calculate the ticks, spaced out by 6 months
-    const ticks = [];
-    let currentDate = new Date(startDate);
-    while (currentDate < endDate) {
-        ticks.push(currentDate);
-        currentDate = new Date(currentDate.getFullYear(), currentDate.getMonth() + 6, 1);
-    }
+    const currencyFormatter = d3.format("$,");
 
     const rvc_x = d3.scaleBand()
         .rangeRound([0, rvc_width])
-        .domain(ticks.map(d => (d.getMonth() + 1) + '/' + d.getFullYear()))
+        .domain(rvc_data.map(d => rvc_parseDate(d.date)))
         .padding(0.2);
 
     const rvc_y = d3.scaleLinear()
@@ -110,25 +114,46 @@ $rvc_data_json = json_encode($data);
         .data(rvc_data)
         .enter().append("rect")
         .attr("class", "bar-revenue")
-        .attr("x", d => rvc_x((rvc_parseDate(d.date).getMonth() + 1) + '/' + rvc_parseDate(d.date).getFullYear()))
+        .attr("x", d => rvc_x(rvc_parseDate(d.date)) + 18) // Ensure x-position is based on parsed date
         .attr("y", d => rvc_y(d.revenue))
-        .attr("width", 20) // Adjust width for bar separation
+        .attr("width", (rvc_x.bandwidth() + 5) / 2)
         .attr("height", d => rvc_height - rvc_y(d.revenue));
 
-    // rvc_g.selectAll(".bar-cost")
-    //     .data(rvc_data)
-    //     .enter().append("rect")
-    //     .attr("class", "bar-cost")
-    //     .attr("x", d => rvc_x(rvc_parseDate(d.date))) // Adjust x position for separation
-    //     .attr("y", d => rvc_y(d.cost))
-    //     .attr("width", rvc_x.bandwidth() / 2) // Adjust width for bar separation
-    //     .attr("height", d => rvc_height - rvc_y(d.cost));
+    // Draw the bars for cost
+    rvc_g.selectAll(".bar-cost")
+        .data(rvc_data)
+        .enter().append("rect")
+        .attr("class", "bar-cost")
+        .attr("x", d => rvc_x(rvc_parseDate(d.date))- 2) // Ensure x-position is based on parsed date
+        .attr("y", d => rvc_y(d.cost))
+        .attr("width", (rvc_x.bandwidth() + 5) / 2)
+        .attr("height", d => rvc_height - rvc_y(d.cost));
+
+    // Append label for the maximum value above the corresponding cost bar
+    rvc_g.selectAll(".bar-label-revenue")
+        .data(rvc_data)
+        .enter().append("text")
+        .attr("class", "bar-label-revenue")
+        .attr("x", d => rvc_x(rvc_parseDate(d.date)) + 30) // Ensure x-position is based on parsed date
+        .attr("y", d => rvc_y(d.revenue) + 50)
+        .attr("text-anchor", "middle")
+        .text(d => currencyFormatter(d.revenue)); // Show the cost value as label
+
+    rvc_g.selectAll(".bar-label-cost")
+        .data(rvc_data)
+        .enter().append("text")
+        .attr("class", "bar-label-cost")
+        .attr("x", d => rvc_x(rvc_parseDate(d.date)) + 10) // Ensure x-position is based on parsed date
+        .attr("y", d => rvc_y(d.cost) + 50)
+        .attr("text-anchor", "middle")
+        .text(d => currencyFormatter(d.cost)); // Show the cost value as label
+
 
     // Draw the x-axis
     rvc_g.append("g")
         .attr("class", "axis")
         .attr("transform", "translate(0," + rvc_height + ")")
-        .call(d3.axisBottom(rvc_x));
+        .call(d3.axisBottom(rvc_x).tickFormat(d3.timeFormat("%-m/%y")));
 
     // Draw the y-axis
     rvc_g.append("g")
