@@ -31,8 +31,8 @@ mysqli_free_result($store_result);
     @include 'sidebar.php';
     ?>
 
-    <div id="stores" class="container" style="width: 80%">
-        <div class="row row-cols-4 row-cols-md-3 mt-3 g-4">
+    <div id="stores" class="container" style="width: 90%">
+        <div class="row mt-3 g-4">
             <?php foreach ($stores as $store) : ?>
                 <div class="col-md-4 ">
                     <div id="store" class="card store<?php echo $store['SITEID']; ?> text-white">
