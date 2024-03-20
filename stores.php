@@ -10,7 +10,7 @@
 
 <body>
     <?php
-    @include 'navigation.php';
+    @include 'sidebar.php';
     ?>
 
     <div id="stores" class="container">

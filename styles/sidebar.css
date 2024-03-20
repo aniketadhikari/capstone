@@ -91,6 +91,9 @@ body {
   justify-content: space-between; /* Distribute space between elements */
   align-items: center; /* Center-align items vertically */
   padding: 0; /* No padding needed by default */
+  padding: 95% 0% 10% 0%;
+  background-color: #87192a;
+  margin: 0;
 }
 
 .icon-button {
@@ -103,12 +106,6 @@ body {
 .icon-button img {
   display: block; /* Remove bottom space under the image */
   width: 24px;
-}
-
-.icon-bar {
-  padding-top: 80%;
-  background-color: #87192a;
-  margin: 0;
 }
 
 .nav-item {
@@ -125,3 +122,4 @@ body {
 .bigbox input:checked ~ ul {
   left: 0;
 }
+

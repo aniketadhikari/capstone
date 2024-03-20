@@ -21,9 +21,6 @@
        }
    </style>
 
-
-
-
    <body>
        <div id="overlay"></div>
        <div class="bigbox">
@@ -38,7 +35,8 @@
                        if (checkbox.checked) {
                            // When checked, set body background color and show overlay
                            overlay.style.display = "block";
-                       } else {
+                       }
+                        else {
                            // When unchecked, revert body background color and hide overlay
                            overlay.style.display = "none";
                        }
@@ -80,10 +78,9 @@
                        <span>Vendor Ratings</span>
                    </a>
                </li>
-               <div class="icon-bar row" style="padding-top: 95%">
-                   <div class="col-6 option"
-                       <a href="settings.php">
-                           <img class="image-options d-block mx-auto" src="images/sf-icons/profile.png" width="24px" alt="">
+               <div class="icon-bar row">
+                   <div class="col-6 option" <a href="settings.php">
+                       <img class="image-options d-block mx-auto" src="images/sf-icons/profile.png" width="24px" alt="">
                        </a>
                    </div>
                    <div class="col-6 option">

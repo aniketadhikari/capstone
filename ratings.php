@@ -39,7 +39,7 @@ if (!isset($_SESSION['id'])) {
 <body>
     <div id="overlay"></div>
     <?php
-    @include 'navigation.php';
+    @include 'sidebar.php';
     ?>
 
     <main class="content">

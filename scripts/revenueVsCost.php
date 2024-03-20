@@ -87,7 +87,7 @@ $rvc_data_json = json_encode($data);
     // Parse the date/time
     const rvc_parseDate = d3.timeParse('%Y-%m');
 
-    // Set up the kpi
+    // Set up the rvc
     const rvc = d3.select(".rvc"),
         rvc_margin = {
             top: 20,
@@ -110,6 +110,7 @@ $rvc_data_json = json_encode($data);
         .rangeRound([rvc_height, 0])
         .domain([0, d3.max(rvc_data, d => Math.max(d.revenue, d.cost))]); // Adjust domain for both revenue and cost
 
+    // Draw the bars for revenue
     rvc_g.selectAll(".bar-revenue")
         .data(rvc_data)
         .enter().append("rect")
@@ -124,12 +125,12 @@ $rvc_data_json = json_encode($data);
         .data(rvc_data)
         .enter().append("rect")
         .attr("class", "bar-cost")
-        .attr("x", d => rvc_x(rvc_parseDate(d.date))- 2) // Ensure x-position is based on parsed date
+        .attr("x", d => rvc_x(rvc_parseDate(d.date)) - 2) // Ensure x-position is based on parsed date
         .attr("y", d => rvc_y(d.cost))
         .attr("width", (rvc_x.bandwidth() + 5) / 2)
         .attr("height", d => rvc_height - rvc_y(d.cost));
 
-    // Append label for the maximum value above the corresponding cost bar
+    // Append label for the maximum value above the corresponding revenue bar
     rvc_g.selectAll(".bar-label-revenue")
         .data(rvc_data)
         .enter().append("text")
@@ -139,6 +140,7 @@ $rvc_data_json = json_encode($data);
         .attr("text-anchor", "middle")
         .text(d => currencyFormatter(d.revenue)); // Show the cost value as label
 
+    // Append label for the maximum value above the corresponding costbar
     rvc_g.selectAll(".bar-label-cost")
         .data(rvc_data)
         .enter().append("text")
@@ -155,8 +157,20 @@ $rvc_data_json = json_encode($data);
         .attr("transform", "translate(0," + rvc_height + ")")
         .call(d3.axisBottom(rvc_x).tickFormat(d3.timeFormat("%-m/%y")));
 
+
+    // creates the format for y-axis
+    function customYAxisTickFormat(d) {
+        // Keep dividing the number by 10 until it's less than 10
+        while (d >= 10) {
+            d /= 10;
+        }
+
+        return "$" + d + "m";
+    }
+
+
     // Draw the y-axis
     rvc_g.append("g")
         .attr("class", "axis")
-        .call(d3.axisLeft(rvc_y).ticks(5));
+        .call(d3.axisLeft(rvc_y).ticks(5).tickFormat(customYAxisTickFormat));
 </script>

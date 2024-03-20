@@ -26,6 +26,6 @@ if (!isset($_SESSION['id'])) {
 
 <body>
     <?php
-    @include 'navigation.php';
+    @include 'sidebar.php';
     ?>
 </body>
