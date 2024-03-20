@@ -1,3 +1,20 @@
+<?php
+
+@include 'config.php';
+
+session_start();
+
+if (!isset($_SESSION['id'])) {
+    header('location:index.php');
+}
+
+$store_select = "SELECT * FROM LOCATION";
+$store_result = mysqli_query($conn, $store_select);
+$stores = mysqli_fetch_all($store_result, MYSQLI_ASSOC);
+mysqli_free_result($store_result);
+
+?>
+
 
 <head>
     <meta charset="UTF-8">
@@ -6,6 +23,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="styles/sidebar.css?1">
+    <link rel="stylesheet" href="styles/pages.css?1">
 </head>
 
 <body>
@@ -13,14 +31,24 @@
     @include 'sidebar.php';
     ?>
 
-    <div id="stores" class="container">
-        <div class="row row-cols-4 row-cols-md-3 g-4">
+    <div id="stores" class="container" style="width: 80%">
+        <div class="row row-cols-4 row-cols-md-3 mt-3 g-4">
             <?php foreach ($stores as $store) : ?>
                 <div class="col-md-4 ">
-                    <div id="store" class="card store<?php echo $store['site_ID']; ?> text-white">
+                    <div id="store" class="card store<?php echo $store['SITEID']; ?> text-white">
                         <div class="card-body">
-                            <h5 class="card-title"><?php echo $store['site_ID']; ?></h5>
-                            <p class="card-text"><?php echo $store['store_name']; ?></p>
+                            <h5 class="card-title"><?php echo $store['SITEID']; ?></h5>
+                            <p class="card-text"><?php echo $store['STORENAME']; ?></p>
+                            <div class="d-flex justify-content-center">
+                                <?php
+                                $ratings = intval($store['Average_Ratings']);
+                                for ($i = 0; $i < $ratings; $i++) {
+                                ?>
+                                    <img class="m-2" src="images/sf-icons/star.png" width="24px" alt="">
+                                <?php
+                                }
+                                ?>
+                            </div>
                         </div>
                     </div>
                 </div>
