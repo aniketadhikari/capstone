@@ -1,13 +1,23 @@
 <?php
 
-if(isset($_GET['submit'])) {
-    $selected_year = $_GET['selected_year'];
-    $statement = 'where MERCHANDISING_YEAR = ' . $selected_year;
+$year_select = "SELECT DISTINCT MERCHANDISING_YEAR as unique_year FROM KPI";
+$year_result = mysqli_query($conn, $year_select);
+$unique_years = mysqli_fetch_all($year_result, MYSQLI_ASSOC);
+mysqli_free_result($year_result);
+
+if (isset($_GET['submit'])) {
+    if ($_GET['selected_year'] == 'IS NOT NULL') {
+        $selected_year = 'IS NOT NULL';
+    } else {
+        $selected_year = '=' . '' . $_GET['selected_year'] . '';
+    }
 }
+
 
 $kpi_select = "SELECT  MERCHANDISING_PERIOD as month, 
 MERCHANDISING_YEAR as year, 
-SUM(SALESU) as sales FROM KPI 
+SUM(SALESU) as sales FROM KPI
+where MERCHANDISING_YEAR $selected_year
 group by MERCHANDISING_YEAR, MERCHANDISING_PERIOD 
 order by MERCHANDISING_YEAR, MERCHANDISING_PERIOD;";
 $kpi_result = mysqli_query($conn, $kpi_select);
@@ -36,6 +46,17 @@ $data_json = json_encode($data);
 
 <!-- styles for the visualizations -->
 <style>
+    .filter-btn {
+        color: white;
+        display: inline-flex;
+        align-items: center;
+        justify-content: space-evenly;
+        border-radius: 1rem;
+        background-color: #87192A;
+        border: #87192A solid 2px;
+        width: 30%;
+    }
+
     /* Style the line */
     .line {
         fill: none;
@@ -109,18 +130,16 @@ $data_json = json_encode($data);
         .attr("class", "axis")
         .call(d3.axisLeft(y).ticks(5));
 </script>
-
 <form action="" method="get">
-    <div class="dropdown">
-        <?php echo $selected_year; ?>
-        <select class="form-select" aria-label="Default select example" name="selected_year" style="display: inline;">
-            <?php
-            $unique_years = array_unique(array_column($kpis, 'year'));
-            // Loop through $kpis array
-            foreach ($unique_years as $u_year) {
-            ?><option value="<?php echo $u_year; ?>"><?php echo $u_year; ?></option>
+    <div class="dropdown" style="display: flex; justify-content: space-evenly; margin-top: 5%">
+        <select class="form-select" aria-label="Default select example" name="selected_year" style="width: 30%">
+            <option value="IS NOT NULL">All</option>
+            <?php foreach ($unique_years as $u_year) { ?>
+                <option value="<?php echo $u_year['unique_year']; ?>"><?php echo $u_year['unique_year']; ?></option>
             <?php } ?>
         </select>
-        <button class="btn-lg shadow login-button" type="submit" name="submit">Filter <i class="bi bi-arrow-right-circle h4"></i></button>
+        <button class="filter-btn" type="submit" name="submit">
+            Filter
+        </button>
+    </div>
 </form>
-</div>

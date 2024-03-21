@@ -44,7 +44,7 @@ mysqli_free_result($kpi_result);
                         <div class="card-header">
                             <h5 class="card-title">Units Sold Per Month (2022 - 2024)</h5>
                         </div>
-                        <div class="card-body">
+                        <div class="card-body" style="align-self: center">
                             <svg class="unitsSold img-fluid" width='800' height="350"></svg>
                             <?php @include 'scripts/unitsSoldPerMonth.php'; ?>
                         </div>
