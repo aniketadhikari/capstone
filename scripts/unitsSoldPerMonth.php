@@ -1,5 +1,10 @@
 <?php
 
+if(isset($_GET['submit'])) {
+    $selected_year = $_GET['selected_year'];
+    $statement = 'where MERCHANDISING_YEAR = ' . $selected_year;
+}
+
 $kpi_select = "SELECT  MERCHANDISING_PERIOD as month, 
 MERCHANDISING_YEAR as year, 
 SUM(SALESU) as sales FROM KPI 
@@ -104,3 +109,18 @@ $data_json = json_encode($data);
         .attr("class", "axis")
         .call(d3.axisLeft(y).ticks(5));
 </script>
+
+<form action="" method="get">
+    <div class="dropdown">
+        <?php echo $selected_year; ?>
+        <select class="form-select" aria-label="Default select example" name="selected_year" style="display: inline;">
+            <?php
+            $unique_years = array_unique(array_column($kpis, 'year'));
+            // Loop through $kpis array
+            foreach ($unique_years as $u_year) {
+            ?><option value="<?php echo $u_year; ?>"><?php echo $u_year; ?></option>
+            <?php } ?>
+        </select>
+        <button class="btn-lg shadow login-button" type="submit" name="submit">Filter <i class="bi bi-arrow-right-circle h4"></i></button>
+</form>
+</div>
