@@ -17,27 +17,16 @@ if (!isset($_SESSION['id'])) {
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles/pages.css?1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="styles/sidebar.css?1">
+    <link rel="stylesheet" href="styles/pages.css?1">
+
     <title>MCX Store Directory</title>
 </head>
-<style>
-    #overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.75);
-        z-index: 1;
-        display: none;
-    }
-</style>
 
 
 
 <body>
-    <div id="overlay"></div>
     <?php
     @include 'sidebar.php';
     ?>
