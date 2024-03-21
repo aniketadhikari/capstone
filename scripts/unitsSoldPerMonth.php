@@ -64,6 +64,10 @@ $data_json = json_encode($data);
         stroke-width: 2px;
     }
 
+    .point {
+        fill: steelblue;
+    }
+
     /* Style the axis */
     .axis {
         font-family: var(--bs-body-font-family);
@@ -75,6 +79,15 @@ $data_json = json_encode($data);
     .axis line {
         fill: none;
         shape-rendering: optimizeSpeed;
+        color: grey;
+    }
+
+    .grid {
+        color: grey;
+    }
+
+    .point-label {
+        color: white;
     }
 </style>
 
@@ -108,6 +121,30 @@ $data_json = json_encode($data);
         .rangeRound([height, 0])
         .domain([d3.min(data, d => d.value), d3.max(data, d => d.value)]);
 
+    g.append("g")
+        .attr("class", "grid")
+        .call(d3.axisLeft(y)
+            .ticks(5)
+            .tickSize(-width)
+            .tickFormat("")
+        );
+
+    g.append("g")
+        .attr("class", "grid")
+        .attr("transform", "translate(0," + height + ")")
+        .call(d3.axisBottom(x)
+            .tickSize(-height)
+            .tickFormat("")
+        );
+
+    g.selectAll(".point")
+        .data(data)
+        .enter().append("circle")
+        .attr("class", "point")
+        .attr("cx", d => x(parseDate(d.date)))
+        .attr("cy", d => y(d.value))
+        .attr("r", 5);
+
     // Define the line
     const line = d3.line()
         .x(d => x(parseDate(d.date)))
@@ -119,11 +156,20 @@ $data_json = json_encode($data);
         .attr("class", "line")
         .attr("d", line);
 
+    g.selectAll(".point-label")
+        .data(data)
+        .enter().append("text")
+        .attr("class", "point-label")
+        .attr("x", d => x(parseDate(d.date)))
+        .attr("y", d => y(d.value) - 10) // Adjust the position to place the text above the point
+        .text(d => d.value)
+        .attr("fill", "white"); // Change the color here
+
     // Draw the x-axis
     g.append("g")
         .attr("class", "axis")
         .attr("transform", "translate(0," + height + ")")
-        .call(d3.axisBottom(x));
+        .call(d3.axisBottom(x).tickFormat(d3.timeFormat("%-m/%y")));
 
     // Draw the y-axis
     g.append("g")

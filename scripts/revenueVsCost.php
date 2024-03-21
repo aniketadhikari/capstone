@@ -110,6 +110,7 @@ $rvc_data_json = json_encode($data);
         .rangeRound([rvc_height, 0])
         .domain([0, d3.max(rvc_data, d => Math.max(d.revenue, d.cost))]); // Adjust domain for both revenue and cost
 
+
     // Draw the bars for revenue
     rvc_g.selectAll(".bar-revenue")
         .data(rvc_data)
