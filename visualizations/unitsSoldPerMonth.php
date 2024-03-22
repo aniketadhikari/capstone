@@ -117,15 +117,17 @@ $data_json = json_encode($data);
         height = +unitsSold.attr("height") - margin.top - margin.bottom,
         g = unitsSold.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-    // Set up the scales
+    // Set up the x-scales
     const x = d3.scaleTime()
         .rangeRound([0, width])
         .domain(d3.extent(data, d => parseDate(d.date)));
 
+    // Set up y-scales
     const y = d3.scaleLinear()
         .rangeRound([height, 0])
-        .domain([d3.min(data, d => d.value), d3.max(data, d => d.value)]);
+        .domain([d3.min(data, d => d.value) / 1.1, d3.max(data, d => d.value) * 1.1]);
 
+    // Vertical gridlines
     g.append("g")
         .attr("class", "grid")
         .call(d3.axisLeft(y)
@@ -133,7 +135,8 @@ $data_json = json_encode($data);
             .tickSize(-width)
             .tickFormat("")
         );
-
+    
+    // Horizontal gridlines
     g.append("g")
         .attr("class", "grid")
         .attr("transform", "translate(0," + height + ")")

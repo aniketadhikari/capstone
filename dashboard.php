@@ -46,7 +46,7 @@ mysqli_free_result($kpi_result);
                         </div>
                         <div class="card-body" style="align-self: center">
                             <svg class="unitsSold img-fluid" width='800' height="350"></svg>
-                            <?php @include 'scripts/unitsSoldPerMonth.php'; ?>
+                            <?php @include 'visualizations/unitsSoldPerMonth.php'; ?>
                         </div>
                     </div>
                 </div>
@@ -75,7 +75,7 @@ mysqli_free_result($kpi_result);
                 </div>
                 <div class="card-body">
                     <svg class="rvc img-fluid" width='1200' height="300"></svg>
-                    <?php @include 'scripts/revenueVsCost.php'; ?>
+                    <?php @include 'visualizations/revenueVsCost.php'; ?>
                 </div>
             </div>
             <div class="row row-cols-1 row-cols-md-4 mt-4">

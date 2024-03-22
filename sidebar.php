@@ -65,12 +65,6 @@
                        <span>Stores</span>
                    </a>
                </li>
-               <li class="nav-item">
-                   <a href="settings.php">
-                       <img src="images/sf-icons/settings.png" alt="4">
-                       <span>Account Settings</span>
-                   </a>
-               </li>
 
                <li class="nav-item">
                    <a href="ratings.php">

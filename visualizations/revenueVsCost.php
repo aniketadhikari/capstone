@@ -55,12 +55,10 @@ $rvc_data_json = json_encode($data);
 
     .bar-cost {
         fill: red;
-        /* Set the color of cost bars to red */
     }
 
     .bar-revenue {
         fill: green;
-        /* Set the color of revenue bars to green */
     }
 
     .bar-label-cost {
@@ -118,6 +116,7 @@ $rvc_data_json = json_encode($data);
         .attr("class", "bar-revenue")
         .attr("x", d => rvc_x(rvc_parseDate(d.date)) + 18) // Ensure x-position is based on parsed date
         .attr("y", d => rvc_y(d.revenue))
+        .attr("ry", 15)
         .attr("width", (rvc_x.bandwidth() + 5) / 2)
         .attr("height", d => rvc_height - rvc_y(d.revenue));
 
@@ -128,6 +127,7 @@ $rvc_data_json = json_encode($data);
         .attr("class", "bar-cost")
         .attr("x", d => rvc_x(rvc_parseDate(d.date)) - 2) // Ensure x-position is based on parsed date
         .attr("y", d => rvc_y(d.cost))
+        .attr("ry", 15)
         .attr("width", (rvc_x.bandwidth() + 5) / 2)
         .attr("height", d => rvc_height - rvc_y(d.cost));
 
