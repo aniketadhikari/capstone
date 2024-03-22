@@ -145,14 +145,10 @@ $data_json = json_encode($data);
             .tickFormat("")
         );
 
-    // Define the line
+    // Draw and define the line
     const line = d3.line()
         .x(d => x(parseDate(d.date)))
         .y(d => y(d.value));
-
-
-
-    // Draw the line
     g.append("path")
         .datum(data)
         .attr("class", "line")

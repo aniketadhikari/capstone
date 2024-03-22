@@ -106,8 +106,25 @@ $rvc_data_json = json_encode($data);
 
     const rvc_y = d3.scaleLinear()
         .rangeRound([rvc_height, 0])
-        .domain([0, d3.max(rvc_data, d => Math.max(d.revenue, d.cost))]); // Adjust domain for both revenue and cost
+        .domain([0, d3.max(rvc_data, d => Math.max(d.revenue, d.cost)) * 1.1]); // Adjust domain for both revenue and cost
 
+    // Vertical gridlines
+    rvc_g.append("g")
+        .attr("class", "grid")
+        .call(d3.axisLeft(rvc_y)
+            .ticks(15)
+            .tickSize(-rvc_width)
+            .tickFormat("")
+        );
+
+    // Horizontal gridlines
+    rvc_g.append("g")
+        .attr("class", "grid")
+        .attr("transform", "translate(0," + rvc_height + ")")
+        .call(d3.axisBottom(rvc_x)
+            .tickSize(-rvc_height)
+            .tickFormat("")
+        );
 
     // Draw the bars for revenue
     rvc_g.selectAll(".bar-revenue")
@@ -162,10 +179,9 @@ $rvc_data_json = json_encode($data);
     // creates the format for y-axis
     function customYAxisTickFormat(d) {
         // Keep dividing the number by 10 until it's less than 10
-        while (d >= 10) {
+        while (d > 10) {
             d /= 10;
         }
-
         return "$" + d + "m";
     }
 

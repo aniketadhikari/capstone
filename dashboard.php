@@ -54,8 +54,7 @@ mysqli_free_result($kpi_result);
                     <div id="widget" class="card text-white h-50">
                         <div class="card-header">Best Stores</div>
                         <div class="card-body">
-                            <h5 class="card-title">Dark card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <?php @include 'visualizations/highRevStores.php'; ?>
                         </div>
                     </div>
                     <div id="widget" class="card text-white h-50">
