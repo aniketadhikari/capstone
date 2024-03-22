@@ -87,7 +87,12 @@ $data_json = json_encode($data);
     }
 
     .point-label {
+        position: absolute;
+        padding: 5px;
         color: white;
+        border-radius: 5px;
+        font-size: 6px;
+        fill: white;
     }
 </style>
 
@@ -124,7 +129,7 @@ $data_json = json_encode($data);
     g.append("g")
         .attr("class", "grid")
         .call(d3.axisLeft(y)
-            .ticks(5)
+            .ticks(10)
             .tickSize(-width)
             .tickFormat("")
         );
@@ -137,18 +142,12 @@ $data_json = json_encode($data);
             .tickFormat("")
         );
 
-    g.selectAll(".point")
-        .data(data)
-        .enter().append("circle")
-        .attr("class", "point")
-        .attr("cx", d => x(parseDate(d.date)))
-        .attr("cy", d => y(d.value))
-        .attr("r", 5);
-
     // Define the line
     const line = d3.line()
         .x(d => x(parseDate(d.date)))
         .y(d => y(d.value));
+
+
 
     // Draw the line
     g.append("path")
@@ -156,14 +155,23 @@ $data_json = json_encode($data);
         .attr("class", "line")
         .attr("d", line);
 
-    g.selectAll(".point-label")
+    const points = g.selectAll(".point")
+        .data(data)
+        .enter().append("circle")
+        .attr("class", "point")
+        .attr("cx", d => x(parseDate(d.date)))
+        .attr("cy", d => y(d.value))
+        .attr("r", 5);
+
+    const labels = g.selectAll(".point-label")
         .data(data)
         .enter().append("text")
         .attr("class", "point-label")
         .attr("x", d => x(parseDate(d.date)))
-        .attr("y", d => y(d.value) - 10) // Adjust the position to place the text above the point
-        .text(d => d.value)
-        .attr("fill", "white"); // Change the color here
+        .attr("y", d => y(d.value) + 1) // Adjust the position to place the text above the point
+        .text(d => d.value);
+
+
 
     // Draw the x-axis
     g.append("g")
@@ -174,7 +182,7 @@ $data_json = json_encode($data);
     // Draw the y-axis
     g.append("g")
         .attr("class", "axis")
-        .call(d3.axisLeft(y).ticks(5));
+        .call(d3.axisLeft(y).ticks(10));
 </script>
 <form action="" method="get">
     <div class="dropdown" style="display: flex; justify-content: space-evenly; margin-top: 5%">
