@@ -52,8 +52,9 @@ mysqli_free_result($kpi_result);
                 </div>
                 <div class="row col-3">
                     <div id="widget" class="card text-white h-50">
-                        <div class="card-header">Best Stores</div>
+                    <div class="card-header">Most profitable stores</div>
                         <div class="card-body">
+                            <!-- <h5 class="card-title">Best Stores</h5> -->
                             <?php @include 'visualizations/highRevStores.php'; ?>
                         </div>
                     </div>
