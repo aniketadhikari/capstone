@@ -25,6 +25,13 @@ mysqli_free_result($kpi_result);
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="styles/pages.css?1">
 </head>
+<style>
+    .card-header {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+</style>
 
 
 <header class="text-center display-3 mx-auto">
@@ -52,17 +59,16 @@ mysqli_free_result($kpi_result);
                 </div>
                 <div class="row col-3">
                     <div id="widget" class="card text-white h-50">
-                    <div class="card-header">Most profitable stores</div>
+                        <div class="card-header">Most profitable stores <img src="images/sf-icons/up-arrow.png" width="12px" style="margin-left: 2%"></div>
                         <div class="card-body">
                             <!-- <h5 class="card-title">Best Stores</h5> -->
                             <?php @include 'visualizations/highRevStores.php'; ?>
                         </div>
                     </div>
                     <div id="widget" class="card text-white h-50">
-                        <div class="card-header">Worst Stores</div>
+                        <div class="card-header">Least profitable stores <img src="images/sf-icons/down-arrow.png" width="12px" style="margin-left: 2%"></div>
                         <div class="card-body">
-                            <h5 class="card-title">Dark card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <?php @include 'visualizations/lowRevStores.php'; ?>
                         </div>
                     </div>
 

@@ -86,14 +86,14 @@ $data_json = json_encode($data);
         color: grey;
     }
 
-    .point-label {
+    /* .point-label {
         position: absolute;
         padding: 5px;
         color: white;
         border-radius: 5px;
         font-size: 6px;
         fill: white;
-    }
+    } */
 </style>
 
 
@@ -162,13 +162,13 @@ $data_json = json_encode($data);
         .attr("cy", d => y(d.value))
         .attr("r", 5);
 
-    const labels = g.selectAll(".point-label")
-        .data(data)
-        .enter().append("text")
-        .attr("class", "point-label")
-        .attr("x", d => x(parseDate(d.date)))
-        .attr("y", d => y(d.value) + 1) // Adjust the position to place the text above the point
-        .text(d => d.value);
+    // const labels = g.selectAll(".point-label")
+    //     .data(data)
+    //     .enter().append("text")
+    //     .attr("class", "point-label")
+    //     .attr("x", d => x(parseDate(d.date)))
+    //     .attr("y", d => y(d.value) + 1) // Adjust the position to place the text above the point
+    //     .text(d => d.value);
 
 
 
