@@ -62,13 +62,13 @@ mysqli_free_result($kpi_result);
                         <div class="card-header">Most profitable stores <img src="images/sf-icons/up-arrow.png" width="12px" style="margin-left: 2%"></div>
                         <div class="card-body">
                             <!-- <h5 class="card-title">Best Stores</h5> -->
-                            <?php @include 'visualizations/highRevStores.php'; ?>
+                            <?php @include 'visualizations/highProfitStores.php'; ?>
                         </div>
                     </div>
                     <div id="widget" class="card text-white h-50">
                         <div class="card-header">Least profitable stores <img src="images/sf-icons/down-arrow.png" width="12px" style="margin-left: 2%"></div>
                         <div class="card-body">
-                            <?php @include 'visualizations/lowRevStores.php'; ?>
+                            <?php @include 'visualizations/lowProfitStores.php'; ?>
                         </div>
                     </div>
 
