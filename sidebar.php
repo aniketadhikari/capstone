@@ -6,6 +6,7 @@
    <!-- Bootstrap -->
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
    <link rel="stylesheet" href="styles/sidebar.css">
+   <link rel="icon" type="image/x-icon" href="images/sf-icons/dashboard.png">
    </head>
 
    <style>
@@ -22,29 +23,13 @@
    </style>
 
    <body>
-       <div id="overlay"></div>
        <div class="bigbox">
            <input type="checkbox" id="checkbox" />
            <label for="checkbox">
-               <img width="50px" src="images/sf-icons/sidebar.png" alt="">
-               <script>
-                   const checkbox = document.getElementById('checkbox');
-                   const overlay = document.getElementById('overlay');
-
-                   checkbox.addEventListener('click', function() {
-                       if (checkbox.checked) {
-                           // When checked, set body background color and show overlay
-                           overlay.style.display = "block";
-                       }
-                        else {
-                           // When unchecked, revert body background color and hide overlay
-                           overlay.style.display = "none";
-                       }
-                   });
-               </script>
+               <img width="25px" src="images/sf-icons/sidebar.png" alt="">
            </label>
            <ul class="list-group" id="nav-bar">
-               <li class="mt-5 mb-5" id="mccs-logo">
+               <li class="pt-5 pb-5" id="mccs-logo">
                    <img src="images/MCCS-logo-white.png" />
                </li>
                <li class="nav-item">

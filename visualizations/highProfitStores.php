@@ -1,14 +1,12 @@
 <?php
 
 $highRevenueStores_select = 'SELECT 
-MERCHANDISING_YEAR as year,
-LOCATION_SKEY as location, 
-SUM(SALESR) as revenue, 
-SUM(SALESC) as cost,
-(SUM(SALESR) - SUM(SALESC)) AS profit
+MERCHANDISING_YEAR as highyear,
+LOCATION_SKEY as highlocation,
+(SUM(SALESR) - SUM(SALESC)) AS highprofit
 FROM KPI 
-group by location, year
-order by profit DESC
+group by highlocation, highyear
+order by highprofit DESC
 LIMIT 5;';
 
 $highRevenueStores_result = mysqli_query($conn, $highRevenueStores_select);
@@ -36,8 +34,8 @@ mysqli_free_result($highRevenueStores_result);
     <tbody>
         <?php foreach ($highRevenueStores as $highRevenueStore) { ?>
             <tr>
-                <td><?php echo $highRevenueStore['location'] ?></td>
-                <td><?php echo "$" . number_format($highRevenueStore['profit'], 2, '.', ',') ?></td>
+                <td><?php echo $highRevenueStore['highlocation'] ?></td>
+                <td><?php echo "$" . number_format($highRevenueStore['highprofit'], 2, '.', ',') ?></td>
             </tr>
         <?php } ?>
     </tbody>

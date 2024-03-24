@@ -37,6 +37,9 @@ mysqli_free_result($store_result);
                 <div class="col-md-4 ">
                     <div id="store" class="card store<?php echo $store['SITEID']; ?> text-white">
                         <div class="card-body">
+                            <div class="d-flex justify-content-center">
+                                <img src="images/mccs-drawing.png" width="50px" alt="">
+                            </div>
                             <h5 class="card-title"><?php echo $store['SITEID']; ?></h5>
                             <p class="card-text"><?php echo $store['STORENAME']; ?></p>
                             <div class="d-flex justify-content-center">

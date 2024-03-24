@@ -42,7 +42,7 @@ body {
   top: 0;
   left: -20%;
   width: 20%;
-  height: 100vh;
+  height: 40%;
   background-color: #87192a;
   transition: all 0.5s;
   z-index: 1;
@@ -54,6 +54,7 @@ body {
   align-items: center;
   justify-content: center;
   width: 100%;
+  background-color: #87192a;
 }
 
 #mccs-logo img {
@@ -91,9 +92,10 @@ body {
   justify-content: space-between; /* Distribute space between elements */
   align-items: center; /* Center-align items vertically */
   padding: 0; /* No padding needed by default */
-  padding: 95% 0% 10% 0%;
+  padding: 70% 0% 10% 0%;
   background-color: #87192a;
   margin: 0;
+  border-bottom-right-radius: 5%;
 }
 
 .icon-button {

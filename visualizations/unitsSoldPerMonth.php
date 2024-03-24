@@ -125,7 +125,7 @@ $data_json = json_encode($data);
     // Set up y-scales
     const y = d3.scaleLinear()
         .rangeRound([height, 0])
-        .domain([d3.min(data, d => d.value) / 1.1, d3.max(data, d => d.value) * 1.1]);
+        .domain([Math.floor(d3.min(data, d => d.value) / 1000000) * 1000000, Math.ceil(d3.max(data, d => d.value) / 1000000) * 1000000]);
 
     // Vertical gridlines
     g.append("g")
