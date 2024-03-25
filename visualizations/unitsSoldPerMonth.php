@@ -60,11 +60,13 @@ $data_json = json_encode($data);
     /* Style the line */
     .line {
         fill: none;
+        /* change this to refer to a php variable */
         stroke: steelblue;
         stroke-width: 2px;
     }
 
     .point {
+        /* change this to refer to a php variable */
         fill: steelblue;
     }
 
@@ -135,7 +137,7 @@ $data_json = json_encode($data);
             .tickSize(-width)
             .tickFormat("")
         );
-    
+
     // Horizontal gridlines
     g.append("g")
         .attr("class", "grid")
