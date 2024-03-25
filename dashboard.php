@@ -24,7 +24,7 @@ mysqli_free_result($kpi_result);
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="styles/pages.css?1">
-    
+
 </head>
 <style>
     .card-header {
@@ -50,11 +50,10 @@ mysqli_free_result($kpi_result);
                 <div class="col-9">
                     <div id="widget" class="card text-white h-100">
                         <div class="card-header">
-                            <h5 class="card-title">Units Sold Per Month (2022 - 2024)</h5>
+                            <h5 class="card-title">Inventory Turnover</h5>
                         </div>
                         <div class="card-body" style="align-self: center">
-                            <svg class="unitsSold img-fluid" width='800' height="350"></svg>
-                            <?php @include 'visualizations/unitsSoldPerMonth.php'; ?>
+                            <?php @include 'visualizations/inventoryTurnover.php'; ?>
                         </div>
                     </div>
                 </div>
@@ -62,7 +61,6 @@ mysqli_free_result($kpi_result);
                     <div id="widget" class="card text-white h-50">
                         <div class="card-header">Most profitable stores <img src="images/sf-icons/up-arrow.png" width="12px" style="margin-left: 2%"></div>
                         <div class="card-body">
-                            <!-- <h5 class="card-title">Best Stores</h5> -->
                             <?php @include 'visualizations/highProfitStores.php'; ?>
                         </div>
                     </div>
@@ -86,6 +84,20 @@ mysqli_free_result($kpi_result);
                 </div>
             </div>
             <?php @include 'visualizations/shrinkage.php' ?>
+            <div class="row row-cols-1 mb-4 mt-3">
+                <!-- Units Sold Per Month -->
+                <div class="col">
+                    <div id="widget" class="card text-white h-100">
+                        <div class="card-header">
+                            <h5 class="card-title">Units Sold Per Month (2022 - 2024)</h5>
+                        </div>
+                        <div class="card-body" style="align-self: center">
+                            <svg class="unitsSold img-fluid" width='1100' height="350"></svg>
+                            <?php @include 'visualizations/unitsSoldPerMonth.php'; ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <!-- Bootstrap JS -->

@@ -34,7 +34,7 @@ mysqli_free_result($lowShrinkage_result);
 
 ?>
 
-<div class="row row-cols-1 row-cols-md-4 mt-4">
+<div class="row md-4 mt-4">
     <div class="col">
         <div id="widget" class="card text-white mb-3">
             <div class="card-header">Top 5 Stores Best Managing Shrinkage</div>
@@ -78,22 +78,6 @@ mysqli_free_result($lowShrinkage_result);
                         <?php } ?>
                     </tbody>
                 </table>
-            </div>
-        </div>
-    </div>
-    <div class="col">
-        <div id="widget" class="card text-white mb-3">
-            <div class="card-header">Header</div>
-            <div class="card-body">
-
-            </div>
-        </div>
-    </div>
-    <div class="col">
-        <div id="widget" class="card text-white mb-3">
-            <div class="card-header">Header</div>
-            <div class="card-body">
-
             </div>
         </div>
     </div>
