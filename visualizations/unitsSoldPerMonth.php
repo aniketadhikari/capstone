@@ -4,13 +4,15 @@ $year_select = "SELECT DISTINCT MERCHANDISING_YEAR as unique_year FROM KPI";
 $year_result = mysqli_query($conn, $year_select);
 $unique_years = mysqli_fetch_all($year_result, MYSQLI_ASSOC);
 mysqli_free_result($year_result);
-
+$uspm_color_mode = $_GET['uspm_color'];
+$uspm_color = 'blue';
 if (isset($_GET['submit'])) {
     if ($_GET['selected_year'] == 'IS NOT NULL') {
         $selected_year = 'IS NOT NULL';
     } else {
         $selected_year = '=' . '' . $_GET['selected_year'] . '';
     }
+    $uspm_color = $uspm_color_mode;
 }
 
 
@@ -39,12 +41,6 @@ foreach ($kpis as $kpi) {
     );
 }
 $data_json = json_encode($data);
-
-$uspm_color_mode = $_GET['uspm_color'];
-$uspm_color = 'blue';
-if (isset($_GET['change_uspm_color'])) {
-    $uspm_color = $uspm_color_mode;
-}
 
 ?>
 
@@ -194,19 +190,6 @@ if (isset($_GET['change_uspm_color'])) {
 </script>
 <form action="" method="get">
     <div class="dropdown" style="display: flex; justify-content: space-evenly; margin-top: 5%">
-        <select class="form-select" aria-label="Default select example" name="selected_year" style="width: 30%">
-            <option value="IS NOT NULL">All</option>
-            <?php foreach ($unique_years as $u_year) { ?>
-                <option value="<?php echo $u_year['unique_year']; ?>"><?php echo $u_year['unique_year']; ?></option>
-            <?php } ?>
-        </select>
-        <button class="filter-btn" type="submit" name="submit">
-            Filter
-        </button>
-    </div>
-</form>
-<form action="" method="get">
-    <div class="dropdown" style="display: flex; justify-content: space-evenly; margin-top: 5%">
         <select class="form-select" aria-label="Default select example" name="uspm_color" style="width: 30%">
             <option value="blue">Blue</option>
             <option value="red">Red</option>
@@ -222,8 +205,16 @@ if (isset($_GET['change_uspm_color'])) {
             <option value="teal">Teal</option>
             <option value="aqua">Aqua</option>
         </select>
-        <button class="filter-btn" type="submit" name="change_uspm_color">
-            Change Colors
+        <select class="form-select" aria-label="Default select example" name="selected_year" style="width: 30%">
+            <option value="IS NOT NULL">All</option>
+            <?php foreach ($unique_years as $u_year) { ?>
+                <option value="<?php echo $u_year['unique_year']; ?>"><?php echo $u_year['unique_year']; ?></option>
+            <?php } ?>
+        </select>
+        <button class="filter-btn" type="submit" name="submit">
+            Filter and Change Color
         </button>
     </div>
+</form>
+<form action="" method="get">
 </form>
