@@ -4,13 +4,15 @@ $year_select = "SELECT DISTINCT MERCHANDISING_YEAR as unique_year FROM KPI";
 $year_result = mysqli_query($conn, $year_select);
 $unique_years = mysqli_fetch_all($year_result, MYSQLI_ASSOC);
 mysqli_free_result($year_result);
-
+$uspm_color_mode = $_GET['uspm_color'];
+$uspm_color = 'blue';
 if (isset($_GET['submit'])) {
     if ($_GET['selected_year'] == 'IS NOT NULL') {
         $selected_year = 'IS NOT NULL';
     } else {
         $selected_year = '=' . '' . $_GET['selected_year'] . '';
     }
+    $uspm_color = $uspm_color_mode;
 }
 
 
@@ -39,6 +41,7 @@ foreach ($kpis as $kpi) {
     );
 }
 $data_json = json_encode($data);
+
 ?>
 
 <!-- D3 package -->
@@ -61,13 +64,13 @@ $data_json = json_encode($data);
     .line {
         fill: none;
         /* change this to refer to a php variable */
-        stroke: steelblue;
+        stroke: <?php echo $uspm_color ?>;
         stroke-width: 2px;
     }
 
     .point {
         /* change this to refer to a php variable */
-        fill: steelblue;
+        fill: <?php echo $uspm_color ?>;
     }
 
     /* Style the axis */
@@ -88,14 +91,14 @@ $data_json = json_encode($data);
         color: grey;
     }
 
-    /* .point-label {
+    .point-label {
         position: absolute;
         padding: 5px;
         color: white;
         border-radius: 5px;
         font-size: 6px;
         fill: white;
-    } */
+    }
 </style>
 
 
@@ -164,13 +167,13 @@ $data_json = json_encode($data);
         .attr("cy", d => y(d.value))
         .attr("r", 5);
 
-    // const labels = g.selectAll(".point-label")
-    //     .data(data)
-    //     .enter().append("text")
-    //     .attr("class", "point-label")
-    //     .attr("x", d => x(parseDate(d.date)))
-    //     .attr("y", d => y(d.value) + 1) // Adjust the position to place the text above the point
-    //     .text(d => d.value);
+    const labels = g.selectAll(".point-label")
+        .data(data)
+        .enter().append("text")
+        .attr("class", "point-label")
+        .attr("x", d => x(parseDate(d.date)))
+        .attr("y", d => y(d.value) + 1) // Adjust the position to place the text above the point
+        .text(d => d.value);
 
 
 
@@ -187,6 +190,21 @@ $data_json = json_encode($data);
 </script>
 <form action="" method="get">
     <div class="dropdown" style="display: flex; justify-content: space-evenly; margin-top: 5%">
+        <select class="form-select" aria-label="Default select example" name="uspm_color" style="width: 30%">
+            <option value="blue">Blue</option>
+            <option value="red">Red</option>
+            <option value="green">Green</option>
+            <option value="white">White</option>
+            <option value="maroon">Maroon</option>
+            <option value="purple">Purple</option>
+            <option value="fuchsia">Fuchsia</option>
+            <option value="lime">Lime</option>
+            <option value="olive">Olive</option>
+            <option value="yellow">Yellow</option>
+            <option value="navy">Navy</option>
+            <option value="teal">Teal</option>
+            <option value="aqua">Aqua</option>
+        </select>
         <select class="form-select" aria-label="Default select example" name="selected_year" style="width: 30%">
             <option value="IS NOT NULL">All</option>
             <?php foreach ($unique_years as $u_year) { ?>
@@ -194,7 +212,9 @@ $data_json = json_encode($data);
             <?php } ?>
         </select>
         <button class="filter-btn" type="submit" name="submit">
-            Filter
+            Filter and Change Color
         </button>
     </div>
+</form>
+<form action="" method="get">
 </form>

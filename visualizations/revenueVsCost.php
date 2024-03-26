@@ -26,6 +26,17 @@ foreach ($kpis as $kpi) {
     );
 }
 $rvc_data_json = json_encode($data);
+
+// change color mode for RVC visualization
+$rvc_color_mode = $_GET['rvc_color'];
+$rev_color = 'green';
+$cost_color = 'red';
+if (isset($_GET['change_rvc_color'])) {
+    if ($rvc_color_mode == 'accessible') {
+        $rev_color = '#34cc00';
+        $cost_color = '#ad154d';
+    }
+}
 ?>
 
 <!-- D3 package -->
@@ -54,11 +65,11 @@ $rvc_data_json = json_encode($data);
     }
 
     .bar-cost {
-        fill: red;
+        fill: <?php echo $cost_color ?>;
     }
 
     .bar-revenue {
-        fill: green;
+        fill: <?php echo $rev_color ?>;
     }
 
     .bar-label-cost {
@@ -91,7 +102,7 @@ $rvc_data_json = json_encode($data);
             top: 20,
             right: 20,
             bottom: 30,
-            left: 60
+            left: 40
         },
         rvc_width = +rvc.attr("width") - rvc_margin.left - rvc_margin.right,
         rvc_height = +rvc.attr("height") - rvc_margin.top - rvc_margin.bottom,
@@ -191,3 +202,14 @@ $rvc_data_json = json_encode($data);
         .attr("class", "axis")
         .call(d3.axisLeft(rvc_y).ticks(5).tickFormat(customYAxisTickFormat));
 </script>
+<form action="" method="get">
+    <div class="dropdown" style="display: flex; justify-content: space-evenly; margin-top: 5%">
+        <select class="form-select" aria-label="Default select example" name="rvc_color" style="width: 30%">
+            <option value="original">Original Colors</option>
+            <option value="accessible">Accessible Colors</option>
+        </select>
+        <button class="filter-btn" type="submit" name="change_rvc_color">
+            Change Colors
+        </button>
+    </div>
+</form>

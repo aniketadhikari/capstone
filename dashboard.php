@@ -79,8 +79,9 @@ mysqli_free_result($kpi_result);
                     <h5 class="card-title">Revenue and Costs Per Month (2022 - 2024)</h5>
                 </div>
                 <div class="card-body">
-                    <svg class="rvc img-fluid" width='1200' height="300"></svg>
+                    <svg class="rvc img-fluid" width='1200' height="300" style="height: 300px;"></svg>
                     <?php @include 'visualizations/revenueVsCost.php'; ?>
+                    
                 </div>
             </div>
             <?php @include 'visualizations/shrinkage.php' ?>
