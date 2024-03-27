@@ -53,6 +53,7 @@ mysqli_free_result($kpi_result);
                             <h5 class="card-title">Inventory Turnover</h5>
                         </div>
                         <div class="card-body" style="align-self: center">
+                            <svg class="turnover img-fluid" width='1200' height="300" style="height: 300px;"></svg>
                             <?php @include 'visualizations/inventoryTurnover.php'; ?>
                         </div>
                     </div>
@@ -81,7 +82,7 @@ mysqli_free_result($kpi_result);
                 <div class="card-body">
                     <svg class="rvc img-fluid" width='1200' height="300" style="height: 300px;"></svg>
                     <?php @include 'visualizations/revenueVsCost.php'; ?>
-                    
+
                 </div>
             </div>
             <?php @include 'visualizations/shrinkage.php' ?>
