@@ -18,7 +18,7 @@ foreach ($turnover_results as $tr) {
     $month = $tr['turnover_period'];
     $year = $tr['turnover_year'];
     $date = sprintf("%04d-%02d", $year, $month);
-    $turnover_amount = intval($tr['inventory_turnover']);
+    $turnover_amount = $tr['inventory_turnover'];
     $turnover_data[] = array(
         'date' => $date,
         'turnover' => $turnover_amount
