@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="css/vendorRating(Writing).css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCX Store Directory</title>
+</head>
+
+<body>
+
+    <aside class="sidebar">
+        <div class="logo">
+            <img src="/images/main/logo.png" alt="MCX Logo">
+        </div>
+        <nav>
+            <!-- <button class="nav-button active"><i class="fa fa-home"></i>&nbsp;&nbsp; Home</button> -->
+            <a href="storePage.html" class="nav-button active"><i class="fa fa-home"></i>&nbsp;&nbsp;Home</a>
+            <a href="storePage.html" class="nav-button active"><i class="fas fa-chart-line"></i></i>&nbsp;&nbsp;Dashboard</a>
+            <a href="storePage.html" class="nav-button active"><i class="fa fa-store"></i>&nbsp;&nbsp;Stores</a>
+            <a href="vendorRating(Viewing).html" class="nav-button active"><i class="fa fa-star"></i>&nbsp;&nbsp;Vendor &nbsp;&nbsp;Ratings</a>
+            <!-- <button class="nav-button"><i class="fa fa-home"></i>&nbsp;&nbsp;Dashboard</button>
+            <button class="nav-button"><i class="fa fa-store"></i> &nbsp;&nbsp;Stores</button>
+            <button class="nav-button"><i class="fa fa-star"></i> &nbsp;&nbsp;Vendor &nbsp;&nbsp;Ratings</button> -->
+        </nav>
+        <div class="bottom-icons">
+            <a href="/profile" class="icon-button"><img src="/images/main/profile.png" alt="Profile"></a>
+            <a href="/settings" class="icon-button"><img src="/images/main/settings.png" alt="Settings"></a>
+            <a href="/logout" class="icon-button"><img src="/images/main/logout.png" alt="Logout"></a>
+        </div>
+    </aside>
+
+    <main class="content">
+        <div class="search-container">
+            <div class="search-box">
+                <input type="text" class="search-bar" placeholder="Search...">
+                <i class="fa fa-search search-icon"></i> <!-- Example using FontAwesome -->
+            </div>
+        </div>
+        <div class="filter-container">
+            <label for="location">Order Placed in: 
+
+                <select name="location" id="location" class="search-select" style="background-color: #555; color: white;">
+                    <!-- Assume options are generated dynamically -->
+                    <option value="1m">Past 1 month</option>
+                    <option value="3m">Past 3 months</option>
+                    <option value="hy">Past 6 months</option>
+                    <option value="fy">Past 1 year</option>
+                </select>
+            </label>
+        </div>
+
+        <div class="order-container">
+            <!-- Vendor Order Card -->
+            <div class="order-card">
+                <div class="vendor-info">
+                    <h2 class="vendor-name">Bookcases Cabinets</h2>
+                    <div class="order-image-container">
+                        <img src="/images/books/bookcases_cabinets.png" alt="Image of Order" class="order-image">
+                    </div>
+                </div>
+                <div class="order-details">
+                    <p class="order-number">Order Number: xxx-xxx-xxxxxx</p>
+                    <p class="product-name">Product Name</p>
+                    <p class="order-status">Status: In Progress</p>
+                    <p class="order-quantity">Quantity: 100</p>
+                    <p class="order-date">Order Date: 02/21/2024</p>
+                </div>
+                <div class="order-feedback">
+                    <div class="order-rating">
+                        <!-- Assuming you have a star rating component or icons -->
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star-half-alt"></i>
+                    </div>
+                    <p class="total-price">Total Price: $xxx,xxx,xxx</p>
+                    <p class="advance-payment">Advance payment: $xx,xxx</p>
+                </div>
+                <div class="order-actions">
+                    <button class="details-button">Details of Order</button>
+                    <button class="feedback-button">Feedback</button>
+                </div>
+            </div>
+            <!-- Repeat for other vendor orders -->
+        </div>
+
+        <div class="vendor-orders-container">
+            <!-- Vendor Order Card with Feedback -->
+            <div class="vendor-order-card">
+                <div class="vendor-info">
+                    <h2 class="vendor-name">Vendor Name</h2>
+                    <div class="vendor-image-container">
+                        <img src="/images/books/bookcases_cabinets.png" alt="Image of Vendor" class="vendor-image">
+                    </div>
+                </div>
+                <div class="order-and-feedback">
+                    <div class="order-details">
+                        <p class="order-number">Order Number: xxx-xxx-xxxxxx</p>
+                        <!-- Other order details -->
+                    </div>
+                    <textarea class="vendor-feedback" placeholder="Writing Feedback..."></textarea>
+                    <div class="feedback-actions">
+                        <button class="send-feedback">Send Feedback</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Repeat for other vendors -->
+        </div>
+        
+
+        <div class="pagination">
+            <!-- Pagination buttons go here -->
+            <button class="page-number active">1</button>
+            <button class="page-number">2</button>
+            <button class="page-number">3</button>
+            <button class="page-number">4</button>
+            <button class="page-number">5</button>
+            <button class="page-number">Next</button>
+            <!-- etc. -->
+        </div>
+
+    </main>
+
+</body>
+
+</html>
