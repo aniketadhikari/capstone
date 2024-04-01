@@ -29,9 +29,11 @@
                <img width="25px" src="images/sf-icons/sidebar.png" alt="">
            </label>
            <ul class="list-group" id="nav-bar">
-               <li class="pt-5 pb-5" id="mccs-logo">
-                   <img src="images/MCCS-logo-white.png" />
-               </li>
+               <a href="welcome.php">
+                   <li class="pt-5 pb-5" id="mccs-logo">
+                       <img src="images/MCCS-logo-white.png" />
+                   </li>
+               </a>
                <li class="nav-item">
                    <a href="welcome.php">
                        <img src="images/sf-icons/house.png" alt="1">
