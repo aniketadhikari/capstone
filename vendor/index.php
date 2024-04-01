@@ -1,8 +1,17 @@
 <?php
-include 'config.php';
+include '../config.php';
 include 'functions.php';
 
-$vendorQuery = "SELECT v.vendor_id, v.vendor_name, v.vendor_description, AVG(c.rating) AS average_rating, COUNT(c.comment_id) AS total_reviews FROM vendors v LEFT JOIN comments c ON v.vendor_id = c.vendor_id GROUP BY v.vendor_id";
+$vendorQuery = "SELECT 
+v.vendor_id, v.vendor_name, v.vendor_description, 
+AVG(c.rating) AS average_rating, 
+COUNT(c.comment_id) AS total_reviews 
+FROM VENDORS v 
+LEFT JOIN 
+COMMENTS c 
+ON v.vendor_id = c.vendor_id 
+GROUP BY v.vendor_id";
+
 $vendors = $conn->query($vendorQuery);
 ?>
 <!DOCTYPE html>

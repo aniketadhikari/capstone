@@ -1,12 +1,12 @@
 <?php
-include 'config.php';
+ include '../config.php';
 include 'functions.php';
 
 $vendor_id = isset($_GET['vendor_id']) ? $_GET['vendor_id'] : die('Vendor ID not specified.');
-$vendorQuery = "SELECT * FROM vendors WHERE vendor_id = $vendor_id";
+$vendorQuery = "SELECT * FROM VENDORS WHERE vendor_id = $vendor_id";
 $vendor = $conn->query($vendorQuery)->fetch_assoc();
 
-$commentsQuery = "SELECT * FROM comments WHERE vendor_id = $vendor_id";
+$commentsQuery = "SELECT * FROM COMMENTS WHERE vendor_id = $vendor_id";
 $comments = $conn->query($commentsQuery);
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {

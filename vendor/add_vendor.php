@@ -1,13 +1,13 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    include 'config.php'; // Include your DB config file
+    include '../config.php'; // Include your DB config file
     // Extract and sanitize input
     $name = $_POST['name']; // Add real escaping or prepared statements here
     $description = $_POST['description'];
     $contact_info = $_POST['contact_info'];
 
     // SQL to insert new vendor
-    $sql = "INSERT INTO vendors (vendor_name, vendor_description, vendor_contact_info) VALUES (?, ?, ?)";
+    $sql = "INSERT INTO VENDORS (vendor_name, vendor_description, vendor_contact_info) VALUES (?, ?, ?)";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("sss", $name, $description, $contact_info);
     $stmt->execute();

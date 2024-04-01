@@ -1,9 +1,9 @@
 <?php
-include 'config.php'; // Your database connection file
+ include '../config.php';
 
 // Function to fetch vendors
 function fetchVendors($conn) {
-    $sql = "SELECT * FROM vendors";
+    $sql = "SELECT * FROM VENDORS";
     $result = $conn->query($sql);
     return $result;
 }
@@ -21,7 +21,7 @@ if(isset($_GET['delete_vendor_id'])) {
 // Function to delete a vendor
 function deleteVendor($vendor_id, $conn) {
     // Fetch vendor's details
-    $vendorQuery = "SELECT * FROM vendors WHERE vendor_id = ?";
+    $vendorQuery = "SELECT * FROM VENDORS WHERE vendor_id = ?";
     $stmt = $conn->prepare($vendorQuery);
     $stmt->bind_param("i", $vendor_id);
     $stmt->execute();
@@ -29,13 +29,13 @@ function deleteVendor($vendor_id, $conn) {
 
     if($vendor) {
         // Insert into trash
-        $insertTrash = "INSERT INTO trash (vendor_id, vendor_name, vendor_description, vendor_contact_info) VALUES (?, ?, ?, ?)";
+        $insertTrash = "INSERT INTO TRASH (vendor_id, vendor_name, vendor_description, vendor_contact_info) VALUES (?, ?, ?, ?)";
         $stmt = $conn->prepare($insertTrash);
         $stmt->bind_param("isss", $vendor['vendor_id'], $vendor['vendor_name'], $vendor['vendor_description'], $vendor['vendor_contact_info']);
         $stmt->execute();
         
         // Delete from vendors
-        $deleteVendor = "DELETE FROM vendors WHERE vendor_id = ?";
+        $deleteVendor = "DELETE FROM VENDORS WHERE vendor_id = ?";
         $stmt = $conn->prepare($deleteVendor);
         $stmt->bind_param("i", $vendor_id);
         $stmt->execute();

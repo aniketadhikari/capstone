@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 -->
 
 <?php
-include 'config.php';
+ include '../config.php';
 
 // Check if the form data is posted
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -42,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $rating = $_POST['rating'];
 
         // Prepare an INSERT statement to add the new comment into the database
-        $stmt = $conn->prepare("INSERT INTO comments (vendor_id, comment, rating) VALUES (?, ?, ?)");
+        $stmt = $conn->prepare("INSERT INTO COMMENTS (vendor_id, comment, rating) VALUES (?, ?, ?)");
         
         // 'i' denotes the vendor_id is an integer, 's' denotes the comment_text and rating are strings
         // Note: If rating is stored as a DECIMAL in the database, you might need to cast it accordingly

@@ -1,9 +1,9 @@
 <?php
-include 'config.php'; // Database connection
+ include '../config.php';
 
 // Function to fetch trashed vendors
 function fetchTrashedVendors($conn) {
-    $sql = "SELECT * FROM trash";
+    $sql = "SELECT * FROM TRASH";
     $result = $conn->query($sql);
     return $result;
 }
@@ -21,7 +21,7 @@ if(isset($_GET['restore_vendor_id'])) {
 // Function to restore a vendor from trash
 function restoreVendor($vendor_id, $conn) {
     // Fetch vendor's details from trash
-    $vendorQuery = "SELECT * FROM trash WHERE vendor_id = ?";
+    $vendorQuery = "SELECT * FROM TRASH WHERE vendor_id = ?";
     $stmt = $conn->prepare($vendorQuery);
     $stmt->bind_param("i", $vendor_id);
     $stmt->execute();
@@ -29,13 +29,13 @@ function restoreVendor($vendor_id, $conn) {
 
     if($vendor) {
         // Insert back into vendors
-        $insertVendor = "INSERT INTO vendors (vendor_id, vendor_name, vendor_description, vendor_contact_info) VALUES (?, ?, ?, ?)";
+        $insertVendor = "INSERT INTO VENDORS (vendor_id, vendor_name, vendor_description, vendor_contact_info) VALUES (?, ?, ?, ?)";
         $stmt = $conn->prepare($insertVendor);
         $stmt->bind_param("isss", $vendor['vendor_id'], $vendor['vendor_name'], $vendor['vendor_description'], $vendor['vendor_contact_info']);
         $stmt->execute();
         
         // Remove from trash
-        $deleteTrash = "DELETE FROM trash WHERE vendor_id = ?";
+        $deleteTrash = "DELETE FROM TRASH WHERE vendor_id = ?";
         $stmt = $conn->prepare($deleteTrash);
         $stmt->bind_param("i", $vendor_id);
         $stmt->execute();
