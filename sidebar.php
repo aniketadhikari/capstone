@@ -52,7 +52,7 @@
                </li>
 
                <li class="nav-item">
-                   <a href="ratings.php">
+                   <a href="vendor/index.php">
                        <img src="images/sf-icons/ratings.png" alt="5">
                        <span>Vendor Ratings</span>
                    </a>
