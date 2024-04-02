@@ -70,7 +70,7 @@ function deleteVendor($vendor_id, $conn) {
         }
         ?>
     </div>
-    <a href="index.php" class="button">Back</a>
+    <a href="../ratings.php" class="button">Back</a>
 
 </body>
 </html>

@@ -1,34 +1,3 @@
-
-<!-- 
-
-
-@include 'config.php';
-$stmt = $conn->prepare("INSERT INTO comments (vendor_id, comment, rating) VALUES (?, ?, ?)");
-$stmt->bind_param("isi", $vendor_id, $comment_text, $rating);
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Assuming these values are passed via POST method
-    $vendor_id = $_POST['vendor_id'];
-    $comment_text = $_POST['comment'];
-    $rating = $_POST['rating'];
-
-    $stmt = $conn->prepare("INSERT INTO comments (vendor_id, comment, rating) VALUES (?, ?, ?)");
-    $stmt->bind_param("isi", $vendor_id, $comment_text, $rating);
-
-    if ($stmt->execute()) {
-        echo "Comment submitted successfully.";
-        // Redirect or perform other success operations
-    } else {
-        echo "Error submitting comment: " . $conn->error;
-    }
-
-    $stmt->close();
-    $conn->close();
-}
-?> 
-
--->
-
 <?php
  include '../config.php';
 

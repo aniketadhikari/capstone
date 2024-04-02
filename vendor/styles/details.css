@@ -1,0 +1,41 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #2e2e2e; /* Dark background for the whole page */
+    color: #ffffff; /* White text for better readability on dark background */
+    line-height: 1.6;
+    padding: 20px;
+}
+
+
+.back-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* Add this to your main.css or a separate CSS file */
+.star-rating {
+    font-size: 20px;
+    color: #FFD700; /* Gold color */
+}
+
+.star-rating .gray {
+    color: #ccc; /* Light gray for the empty part of the rating */
+}
+
+.vendor-list-container, .vendor-details {
+    width: 90%;
+    margin: auto;
+    overflow: hidden;
+}
+
+
+.vendor, .comment {
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    padding: 10px;
+}

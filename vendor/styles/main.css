@@ -1,3 +1,12 @@
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #1e1e1e; /* Dark background for the whole page */
+    color: #ffffff; /* White text for better readability on dark background */
+    line-height: 1.6;
+    padding: 20px;
+}
+
 .vendor-list-container, .vendor-details {
     width: 90%;
     margin: auto;
@@ -19,15 +28,6 @@ form {
     margin-top: 20px;
 }
 
-/* Add this to your main.css or a separate CSS file */
-.star-rating {
-    font-size: 20px;
-    color: #FFD700; /* Gold color */
-}
-
-.star-rating .gray {
-    color: #ccc; /* Light gray for the empty part of the rating */
-}
 
 /* back button */
 .back-button {
@@ -57,4 +57,15 @@ form {
     text-decoration: none; /* Remove underline from links */
     border-radius: 5px; /* Rounded corners */
     cursor: pointer; /* Change mouse cursor on hover */
+}
+
+
+/* Add this to your main.css or a separate CSS file */
+.star-rating {
+    font-size: 20px;
+    color: #FFD700; /* Gold color */
+}
+
+.star-rating .gray {
+    color: #ccc; /* Light gray for the empty part of the rating */
 }

@@ -58,7 +58,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </select>
                 <button type="submit">Submit Comment</button>
             </form>
-            <a href="index.php" class="back-button">Back to Main Page</a>
+            <a href="../ratings.php" class="back-button">Back to Main Page</a>
 
         </div>
     </body>

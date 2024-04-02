@@ -17,12 +17,24 @@ $vendors = $conn->query($vendorQuery);
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/sidebar.css?1">
+    <link rel="stylesheet" href="styles/pages.css?1">
+
     <link rel="stylesheet" href="styles/main.css">
     <title>Vendor Ratings</title>
 </head>
     <body>
-        <br>
+
+        <?php
+            @include './sidebar.php';
+        ?>
         <div class="vendor-list-container">
+            <a href="setting_page.php" class="button_vendor_main">Manage Vendors</a>
+            <br>
             <?php while($vendor = $vendors->fetch_assoc()): ?>
                 <div class="vendor">
                     <h3><?php echo htmlspecialchars($vendor['vendor_name']); ?></h3>
@@ -35,7 +47,6 @@ $vendors = $conn->query($vendorQuery);
                 </div>
             <?php endwhile; ?>
 
-            <a href="setting_page.php" class="button_vendor_main">Manage Vendors</a>
 
         </div>
 

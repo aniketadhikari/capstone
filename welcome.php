@@ -36,7 +36,7 @@ if (!isset($_SESSION['id'])) {
             <div class="card-body">
                <div class="content text-center">
                   <a href="dashboard.php" class="btn ">Dashboard <img src="images/sf-icons/dashboard.png" width="20px" height="20px" alt="Dashboard"></a>
-                  <a href="vendor/index.php" class="btn">Vendor Rating <img src="images/sf-icons/ratings.png" width="20px" height="20px" alt="Vendor Ratings"></a>
+                  <a href="ratings.php" class="btn">Vendor Rating <img src="images/sf-icons/ratings.png" width="20px" height="20px" alt="Vendor Ratings"></a>
                   <a href="stores.php" class="btn">Stores <img src="images/sf-icons/store.png" width="20px" height="20px" alt="Stores"></a>
                   <a href="logout.php" class="btn">Logout <img src="images/sf-icons/logout.png" width="20px" height="20px" alt="Dashboard"> </a>
                </div>

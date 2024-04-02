@@ -20,16 +20,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="stylesheet" href="styles/main.css">
     <title>Add Vendor</title>
 </head>
     <body>
         <form method="post" action="add_vendor.php">
             <input type="text" name="name" placeholder="Vendor Name" required>
+            <br>
+
             <textarea name="description" placeholder="Vendor Description"></textarea>
+            <br>
+
             <input type="text" name="contact_info" placeholder="Contact Info">
-            <button type="submit">Add Vendor</button>
         </form>
         <div>
+            <button class ="button" type="submit">Add Vendor</button>
             <a href="setting_page.php" class="button">Back</a>
 
         </div>
