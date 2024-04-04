@@ -58,6 +58,8 @@ $turnover_data_json = json_encode($turnover_data);
         .rangeRound([turnover_height, 0])
         .domain([0, d3.max(turnover_data, d => Math.max(d.turnover)) * 1.1]);
 
+
+    // veritcal gridlines
     turnover_g.append("g")
         .attr("class", "grid")
         .call(d3.axisLeft(turnover_y)
@@ -74,7 +76,11 @@ $turnover_data_json = json_encode($turnover_data);
             .tickSize(-turnover_height)
             .tickFormat("")
         );
+    const max = d3.max(turnover_data, function(d) {
+        return +d.value;
+    })
 
+    // draws the line
     const turnover_line = d3.line()
         .x(d => turnover_x(turnover_parseDate(d.date)))
         .y(d => turnover_y(d.turnover));
@@ -82,7 +88,39 @@ $turnover_data_json = json_encode($turnover_data);
     turnover_g.append("path")
         .datum(turnover_data)
         .attr("class", "line")
+        .attr("fill", "none")
+        .attr("stroke", "url(#line-gradient)")
+        .attr("stroke-width", 2)
         .attr("d", turnover_line);
+
+    // Draw the x-axis
+    turnover_g.append("g")
+        .attr("class", "axis")
+        .attr("transform", "translate(0," + turnover_height + ")")
+        .call(d3.axisBottom(turnover_x).tickFormat(d3.timeFormat("%-m/%y")));
+
+    // Draw the y-axis
+    turnover_g.append("g")
+        .attr("class", "axis")
+        .call(d3.axisLeft(turnover_y).ticks(10));
+
+    // creates points 
+    const turnover_points = turnover_g.selectAll(".point")
+        .data(turnover_data)
+        .enter().append("circle")
+        .attr("class", "point")
+        .attr("cx", d => turnover_x(turnover_parseDate(d.date)))
+        .attr("cy", d => turnover_y(d.turnover))
+        .attr("r", 5);
+
+    // creates labels 
+    const turnover_labels = turnover_g.selectAll(".point-label")
+        .data(turnover_data)
+        .enter().append("text")
+        .attr("class", "point-label")
+        .attr("x", d => turnover_x(turnover_parseDate(d.date)))
+        .attr("y", d => turnover_y(d.turnover) + 1) // Adjust the position to place the text above the point
+        .text(d => d.turnover);
 </script>
 <form action="" method="get">
     <div class="dropdown" style="display: flex; justify-content: space-evenly; margin-top: 5%">
