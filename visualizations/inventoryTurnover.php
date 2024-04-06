@@ -1,12 +1,26 @@
 <?php
-$turnover_select = 'SELECT 
+$invTurn_year_select = "SELECT DISTINCT MERCHANDISING_YEAR as unique_invTurn_year FROM KPI";
+$invTurn_year_result = mysqli_query($conn, $invTurn_year_select);
+$unique_invTurn_years = mysqli_fetch_all($invTurn_year_result, MYSQLI_ASSOC);
+mysqli_free_result($invTurn_year_result);
+if (isset($_GET['turnover_submit'])) {
+    if ($_GET['turnover_year'] == 'IS NOT NULL') {
+        $turnover_year = 'IS NOT NULL';
+    } else {
+        $turnover_year = '=' . '' . $_GET['turnover_year'] . '';
+    }
+}
+
+
+$turnover_select = "SELECT 
 MERCHANDISING_YEAR AS turnover_year,
 MERCHANDISING_PERIOD AS turnover_period,
 SUM(SALESU) / ((SUM(OPENINVU) + SUM(CLOSEU)) / 2) AS inventory_turnover
 FROM 
 KPI
+where MERCHANDISING_YEAR $turnover_year
 GROUP BY 
-turnover_year, turnover_period';
+turnover_year, turnover_period";
 
 $turnover_result = mysqli_query($conn, $turnover_select);
 $turnover_results = mysqli_fetch_all($turnover_result, MYSQLI_ASSOC);
@@ -25,6 +39,7 @@ foreach ($turnover_results as $tr) {
     );
 }
 $turnover_data_json = json_encode($turnover_data);
+
 ?>
 <style>
     body {
@@ -49,10 +64,9 @@ $turnover_data_json = json_encode($turnover_data);
         turnover_height = +turnover.attr("height") - turnover_margin.top - turnover_margin.bottom,
         turnover_g = turnover.append("g").attr("transform", "translate(" + turnover_margin.left + "," + turnover_margin.top + ")");
 
-    const turnover_x = d3.scaleBand()
-        .rangeRound([0, turnover_width])
-        .domain(turnover_data.map(d => turnover_parseDate(d.date)))
-        .padding(0.2);
+    const turnover_x = d3.scaleTime()
+        .rangeRound([0, turnover_width * .67])
+        .domain(d3.extent(turnover_data, d => turnover_parseDate(d.date)));
 
     const turnover_y = d3.scaleLinear()
         .rangeRound([turnover_height, 0])
@@ -126,6 +140,9 @@ $turnover_data_json = json_encode($turnover_data);
     <div class="dropdown" style="display: flex; justify-content: space-evenly; margin-top: 5%">
         <select class="form-select" aria-label="Default select example" name="turnover_year" style="width: 30%">
             <option value="IS NOT NULL">All</option>
+            <?php foreach ($unique_invTurn_years as $uit_year) { ?>
+                <option value="<?php echo $uit_year['unique_invTurn_year']; ?>"><?php echo $uit_year['unique_invTurn_year']; ?></option>
+            <?php } ?>
         </select>
         <button class="filter-btn" type="submit" name="turnover_submit">
             Filter
