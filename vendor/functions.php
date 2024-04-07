@@ -7,17 +7,17 @@ function displayStarRating($rating) {
 
     // Full stars
     for ($i = 0; $i < floor($rating); $i++) {
-        $output .= '★'; // Full star
+        $output .= '<img src="images/sf-icons/star.png" width="25px">'; // Full star
     }
 
     // Half star
     if ($rating - floor($rating) >= 0.5) {
-        $output .= '½'; // Half star (You can use a half-star character or icon)
+        $output .= '<img src="images/sf-icons/half-star.png" width="25px">'; // Half star (You can use a half-star character or icon)
     }
 
     // Empty stars
     for ($i = ceil($rating); $i < 5; $i++) {
-        $output .= '<span class="gray">★</span>'; // Empty star
+        $output .= '<img src="images/sf-icons/empty-star.png" width="25px">'; // Empty star
     }
 
     $output .= '</div>';

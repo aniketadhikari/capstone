@@ -12,6 +12,7 @@ $kpi_select = "SELECT * FROM KPI WHERE MERCHANDISING_YEAR=2008 AND MERCHANDISING
 $kpi_result = mysqli_query($conn, $kpi_select);
 $kpis = mysqli_fetch_all($kpi_result, MYSQLI_ASSOC);
 mysqli_free_result($kpi_result);
+
 ?>
 
 <!DOCTYPE html>

@@ -16,6 +16,7 @@ $vendors = $conn->query($vendorQuery);
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
     <meta charset="UTF-8">
@@ -27,28 +28,32 @@ $vendors = $conn->query($vendorQuery);
 
     <title>Vendor Ratings</title>
 </head>
-    <body>
 
-        <?php
-            @include 'sidebar.php';
-        ?>
-        <div class="vendor-list-container">
+<body>
+
+    <?php
+    @include 'sidebar.php';
+    ?>
+    <div class="vendor-list-container">
+        <div>
             <a href="./vendor/setting_page.php" class="button_vendor_main">Manage Vendors</a>
-            <br>
-            <?php while($vendor = $vendors->fetch_assoc()): ?>
-                <div class="vendor">
-                    <h3><?php echo htmlspecialchars($vendor['vendor_name']); ?></h3>
-                    <p><?php echo htmlspecialchars($vendor['vendor_description']); ?></p>
-                    <div class="vendor-rating">
-                        <p>Average Rating: <?php echo round($vendor['average_rating'], 1); ?> from <?php echo $vendor['total_reviews']; ?> reviews</p>
-                        <p><?php echo displayStarRating($vendor['average_rating']); ?></p>
-                    </div>
-                    <a href="./vendor/vendor_details.php?vendor_id=<?php echo $vendor['vendor_id']; ?>" class="details-button">View Details</a>
-                </div>
-            <?php endwhile; ?>
-
-
         </div>
+        <br>
+        <?php while ($vendor = $vendors->fetch_assoc()) : ?>
+            <div class="vendor mb-3">
+                <h3><?php echo htmlspecialchars($vendor['vendor_name']); ?></h3>
+                <h5><?php echo htmlspecialchars($vendor['vendor_description']); ?></h5>
+                <div class="vendor-rating">
+                    <p>Average Rating: <?php echo round($vendor['average_rating'], 1); ?> from <?php echo $vendor['total_reviews']; ?> reviews</p>
+                    <p><?php echo displayStarRating($vendor['average_rating']); ?></p>
+                </div>
+                <a href="./vendor/vendor_details.php?vendor_id=<?php echo $vendor['vendor_id']; ?>" class="details-button">View Details</a>
+            </div>
+        <?php endwhile; ?>
 
-    </body>
+
+    </div>
+
+</body>
+
 </html>
