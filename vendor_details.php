@@ -1,5 +1,5 @@
 <?php
- include '../config.php';
+ include 'config.php';
 include 'functions.php';
 
 $vendor_id = isset($_GET['vendor_id']) ? $_GET['vendor_id'] : die('Vendor ID not specified.');
@@ -58,7 +58,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </select>
                 <button type="submit">Submit Comment</button>
             </form>
-            <a href="../ratings.php" class="back-button">Back to Main Page</a>
+            <a href="ratings.php" class="back-button">Back to Main Page</a>
 
         </div>
     </body>
