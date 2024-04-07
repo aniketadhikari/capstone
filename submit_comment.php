@@ -1,5 +1,5 @@
 <?php
- include '../config.php';
+ include 'config.php';
 
 // Check if the form data is posted
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {

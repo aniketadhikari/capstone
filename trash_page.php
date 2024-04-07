@@ -1,5 +1,5 @@
 <?php
- include '../config.php';
+ include 'config.php';
 
 // Function to fetch trashed vendors
 function fetchTrashedVendors($conn) {
@@ -67,7 +67,7 @@ function restoreVendor($vendor_id, $conn) {
         }
         ?>
     </div>
-    <a href="setting_page.php" class="back-button">Back</a>
+    <a href="vendor_settings.php" class="back-button">Back</a>
 
 </body>
 </html>
