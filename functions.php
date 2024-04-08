@@ -16,7 +16,7 @@ function displayStarRating($rating) {
     }
 
     // Empty stars
-    for ($i = ceil($rating); $i < 5; $i++) {
+    for ($i = ceil($rating); $i <= 5; $i++) {
         $output .= '<img src="images/sf-icons/empty-star.png" width="25px">'; // Empty star
     }
 

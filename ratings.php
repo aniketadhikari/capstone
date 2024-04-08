@@ -39,6 +39,9 @@ $vendors = $conn->query($vendorQuery);
         border-width: 2px;
         width: 10rem;
     }
+    h1 {
+        text-align: center;
+    }
 </style>
 
 <body>
@@ -46,9 +49,11 @@ $vendors = $conn->query($vendorQuery);
     <?php
     @include 'sidebar.php';
     ?>
+    <h1>Vendor Ratings</h1>
     <div class="vendor-list-container">
         <div>
-            <a href="vendor_settings.php" class="button_vendor_main">Manage Vendors</a>
+            <a href="vendor_settings.php" class="button button_vendor_main">Manage Vendors</a>
+            <a href="submit_comment.php" class="button">Comment<img src="images/sf-icons/comment.png" width="18px" alt=""></a>
         </div>
         <br>
         <?php while ($vendor = $vendors->fetch_assoc()) : ?>
