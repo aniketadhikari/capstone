@@ -72,7 +72,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <?php endif; ?>
         <div class="mt-3">
             <a href="ratings.php" class="back-button button">Back to Main Page <img src="images/sf-icons/go-back.png" width="18px" alt=""></a>
-            <a href="submit_comment.php" class="submit-comment button">Comment<img src="images/sf-icons/comment.png" width="18px" alt=""></a>
+            <a href="submit_comment.php" class="button">Comment<img src="images/sf-icons/comment.png" width="18px" alt=""></a>
         </div>
     </div>
 </body>
