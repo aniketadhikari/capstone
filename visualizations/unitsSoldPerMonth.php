@@ -214,6 +214,7 @@ $data_json = json_encode($data);
         <button class="filter-btn" type="submit" name="submit">
             Filter and Change Color
         </button>
+        
     </div>
 </form>
 <form action="" method="get">
