@@ -104,7 +104,7 @@ function deleteVendor($vendor_id, $conn)
                     <a href="vendor_details.php?vendor_id=<?php echo $vendor['vendor_id']; ?>" class="details-button button">View Details
                         <img src="images/sf-icons/arrow-forward-circle.png" alt="" width="18px">
                     </a>
-                    <a href='vendor_settings.php?delete_vendor_id=' <?php $vendor['vendor_id'] ?> class='delete-button button'>Delete
+                    <a href=<?php echo  'vendor_settings.php?delete_vendor_id=' .  $vendor['vendor_id']?>  class='delete-button button'>Delete
                         <img src="images/sf-icons/backspace.png" alt="" width="18px">
                     </a>
 

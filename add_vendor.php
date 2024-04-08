@@ -1,4 +1,5 @@
 <?php
+include 'config.php';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     include 'config.php'; // Include your DB config file
     // Extract and sanitize input
@@ -64,12 +65,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <input class="form-control-lg" type="text" name="contact_info" placeholder="Contact Info">
         </div>
         <br>
-    </form>
-    <div>
-        <a href="vendor_settings.php" class="back button">Back <img src="images/sf-icons/go-back.png" alt="" width="18px"></a>
-        <button class="button" type="submit">Add Vendor <img src="images/sf-icons/plus-sign.png" alt="" width="18px"></button>
+        <div>
+            <a href="vendor_settings.php" class="back button">Back <img src="images/sf-icons/go-back.png" alt="" width="18px"></a>
+            <button class="button" type="submit">Add Vendor <img src="images/sf-icons/plus-sign.png" alt="" width="18px"></button>
+        </div>
 
-    </div>
+    </form>
+
 
 </body>
 

@@ -1,5 +1,5 @@
 <?php
- include 'config.php';
+include 'config.php';
 
 // Check if the form data is posted
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -11,30 +11,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $rating = $_POST['rating'];
 
         // Prepare an INSERT statement to add the new comment into the database
-        $stmt = $conn->prepare("INSERT INTO COMMENTS (vendor_id, comment, rating) VALUES (?, ?, ?)");
-        
+        $insert_stmt = "INSERT INTO COMMENTS(vendor_id, comment, rating) VALUES(?, ?, ?)";
+        $insert_stmt_prepared = $conn->prepare($insert_stmt);
+
         // 'i' denotes the vendor_id is an integer, 's' denotes the comment_text and rating are strings
         // Note: If rating is stored as a DECIMAL in the database, you might need to cast it accordingly
-        $stmt->bind_param("isi", $vendor_id, $comment_text, $rating);
-        
-        // Execute the statement
-        if ($stmt->execute()) {
-            // Redirect back to the vendor details page or display a success message
-            header("Location: vendor_details.php?vendor_id=$vendor_id");
-            exit();
-        } else {
-            // Handle error
-            echo "Error: " . $stmt->error;
-        }
-        
+        $insert_stmt_prepared->bind_param("isi", $vendor_id, $comment_text, $rating);
+        $insert_stmt_prepared->execute();
+        echo "Error: " . $insert_stmt_prepared->error;
+
         // Close statement
-        $stmt->close();
-    } else {
-        // Not all fields were filled in
-        echo "Please fill in all fields.";
+        $insert_stmt_prepared->close();
     }
 }
-
-// Close connection
-$conn->close();
-?>
