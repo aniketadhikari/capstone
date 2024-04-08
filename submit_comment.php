@@ -47,16 +47,13 @@ function fetchVendors($conn)
         background-color: #df0000;
     }
 
-    textarea {
-        width: 100%;
-    }
-
     h1 {
         text-align: center;
     }
 
     #comment {
-        color: white
+        color: white;
+        height: 200px;
     }
 </style>
 
@@ -69,7 +66,7 @@ function fetchVendors($conn)
         <div class="form-group">
             <!-- <input class="form-control-lg" type="text" name="name" placeholder="Vendor Name" required> -->
             <label for="vendorSelect" class="form-label">Select vendor</label>
-            <select name="vendorSelect" id="vendorSelect" class="form-select form-control-lg">
+            <select name="vendorSelect" id="vendorSelect" class="form-control-lg form-select" required>
                 <?php
                 $vendors = fetchVendors($conn);
                 if ($vendors->num_rows > 0) {
@@ -86,16 +83,19 @@ function fetchVendors($conn)
         </div>
         <br>
         <div class="form-group">
-            <input name="comment" type="text" id="comment" class="form-control form-control-lg" placeholder="Write your comment here" required>
+            <label for="comment" class="form-label">Comments about vendor</label>
+            <textarea name="comment" id="comment" class="form-control-lg form-control" cols="30" rows="20" placeholder="Write your comment here..." required></textarea>
+            <!-- <input name="comment" type="text" id="comment" class=" form-control-lg" placeholder="Write your comment here" required> -->
         </div>
         <br>
         <div class="form-group">
-            <select name="ratingSelect" id="ratingSelect" class="form-select form-control-lg">
-                <option value="1.0">1 Star</option>
-                <option value="2.0">2 Star</option>
-                <option value="3.0">3 Star</option>
-                <option value="4.0">4 Star</option>
-                <option value="5.0">5 Star</option>
+            <label for="ratingSelect" class="form-label">Rate the vendor 1-5</label>
+            <select name="ratingSelect" id="ratingSelect" class="form-select form-control-lg" required>
+                <option value="1.0">⭐︎</span></option>
+                <option value="2.0">⭐︎⭐︎</option>
+                <option value="3.0">⭐︎⭐︎⭐︎</option>
+                <option value="4.0">⭐︎⭐︎⭐︎⭐︎</option>
+                <option value="5.0">⭐︎⭐︎⭐︎⭐︎⭐︎</option>
             </select>
         </div>
         <br>
