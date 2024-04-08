@@ -9,8 +9,7 @@ if (isset($_POST['submit_comment'])) {
 
     $comment_insert = "INSERT INTO dbmaster.COMMENTS(`vendor_id`, `comment`, `rating`) VALUES($vendor_id, '$vendor_comment', $rating)";
     mysqli_query($conn, $comment_insert);
-    echo "INSERT INTO dbmaster.COMMENTS(`vendor_id`, `comment`, `rating`) VALUES($vendor_id, '$vendor_comment', $rating)";
-    // header('location: ratings.php');
+    header('location: vendor_details.php?vendor_id=' . $vendor_id);
 }
 
 function fetchVendors($conn)
@@ -41,6 +40,7 @@ function fetchVendors($conn)
         border-width: 0px;
         width: 14rem;
         border-color: #007bff;
+        height: 3rem;
     }
 
     .submit-comment {
@@ -50,14 +50,26 @@ function fetchVendors($conn)
     textarea {
         width: 100%;
     }
+
+    h1 {
+        text-align: center;
+    }
+
+    #comment {
+        color: white
+    }
 </style>
 
 <body>
+    <?php
+    @include 'sidebar.php';
+    ?>
+    <h1>Comment on Vendor</h1>
     <form action="" method="post">
         <div class="form-group">
             <!-- <input class="form-control-lg" type="text" name="name" placeholder="Vendor Name" required> -->
             <label for="vendorSelect" class="form-label">Select vendor</label>
-            <select name="vendorSelect" id="vendorSelect" class="form-select">
+            <select name="vendorSelect" id="vendorSelect" class="form-select form-control-lg">
                 <?php
                 $vendors = fetchVendors($conn);
                 if ($vendors->num_rows > 0) {
@@ -74,11 +86,11 @@ function fetchVendors($conn)
         </div>
         <br>
         <div class="form-group">
-            <input name="comment" type="text" id="comment" class="form-control form-control" placeholder="Write your comment here" required>
+            <input name="comment" type="text" id="comment" class="form-control form-control-lg" placeholder="Write your comment here" required>
         </div>
         <br>
         <div class="form-group">
-            <select name="ratingSelect" id="ratingSelect" class="form-select">
+            <select name="ratingSelect" id="ratingSelect" class="form-select form-control-lg">
                 <option value="1.0">1 Star</option>
                 <option value="2.0">2 Star</option>
                 <option value="3.0">3 Star</option>

@@ -53,6 +53,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </style>
 
 <body>
+    <?php
+    @include 'sidebar.php';
+    ?>
 
     <div class="vendor-details">
         <h1><?php echo htmlspecialchars($vendor['vendor_name']); ?></h1>
