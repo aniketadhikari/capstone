@@ -52,7 +52,6 @@ function fetchVendors($conn)
     }
 
     #comment {
-        color: white;
         height: 200px;
     }
 </style>
