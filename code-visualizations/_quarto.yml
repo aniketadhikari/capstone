@@ -1,0 +1,27 @@
+project:
+  type: website
+  output-dir: /
+
+website:
+  title: Visualizations for MCCS 
+  navbar:
+    style: docked
+    background: primary
+    left:
+      - href: index.qmd
+        text: Home
+      - href: INV_eda.html
+        text: Inventory Adjustment Analysis - EDA
+      - href: Visualization plot.html
+        text: Visualizations
+      - href: Capstone_shrinkage_filtering_visual.html
+        text: Shrinkage Filtering Visualizations
+
+format:
+  html:
+    theme: lux
+    css: styles.css
+    toc: true
+
+
+
