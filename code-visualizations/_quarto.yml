@@ -3,7 +3,7 @@ project:
   output-dir: /
 
 website:
-  title: Visualizations for MCCS 
+  title: MCCS 
   navbar:
     style: docked
     background: primary
