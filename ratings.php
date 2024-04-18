@@ -53,6 +53,7 @@ $vendors = $conn->query($vendorQuery);
     <div class="vendor-list-container">
         <div>
             <a href="vendor_settings.php" class="button button_vendor_main">Manage Vendors</a>
+            <a href="vendor_analysis.php" class="button button_vendor_main">Vendors Analysis</a>
             <a href="submit_comment.php" class="button">Comment<img src="images/sf-icons/comment.png" width="18px" alt=""></a>
         </div>
         <br>
