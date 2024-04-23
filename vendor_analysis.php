@@ -10,7 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $end_date = $_POST['end_date'] . ' 23:59:59'; // Include time for end date
 
     // Fetch individual ratings from comments
-    $ratingQuery = "SELECT DATE(created_at) AS date, rating FROM comments 
+    $ratingQuery = "SELECT DATE(created_at) AS date, rating FROM COMMENTS 
                     WHERE vendor_id = ? AND created_at BETWEEN ? AND ?
                     ORDER BY created_at ASC";
     $stmt = $conn->prepare($ratingQuery);
@@ -25,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 // Fetch vendors for the dropdown
-$vendorQuery = "SELECT vendor_id, vendor_name FROM vendors";
+$vendorQuery = "SELECT vendor_id, vendor_name FROM VENDORS";
 $vendors = $conn->query($vendorQuery);
 ?>
 <!DOCTYPE html>
