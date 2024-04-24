@@ -58,6 +58,12 @@
                        <span>Vendor Ratings</span>
                    </a>
                </li>
+               <li class="nav-item">
+                   <a href="code-visualizations/index.html">
+                       <img src="images/sf-icons/code-folder.png" alt="5">
+                       <span>Code for Visuals</span>
+                   </a>
+               </li>
                <div class="icon-bar row">
                    <div class="col-6 option" <a href="settings.php">
                        <img class="image-options d-block mx-auto" src="images/sf-icons/profile.png" width="24px" alt="">
