@@ -33,13 +33,15 @@ $vendors = $conn->query($vendorQuery);
 <head>
     <meta charset="UTF-8">
     <title>Vendor Analysis</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="styles/main.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
 </head>
 <body>
     <form action="vendor_analysis.php" method="post">
         <label for="vendor">Choose a vendor:</label>
-        <select name="vendor_id" id="vendor">
+        <select name="vendor_id" id="vendor" class="form-control-lg form-select" required> 
             <?php while($vendor = $vendors->fetch_assoc()): ?>
                 <option value="<?php echo $vendor['vendor_id']; ?>">
                     <?php echo htmlspecialchars($vendor['vendor_name']); ?>
@@ -49,18 +51,18 @@ $vendors = $conn->query($vendorQuery);
         <br>
         
         <label for="start_date">Start Date:</label>
-        <input type="date" name="start_date" id="start_date" required>
+        <input class="form-control form-control-lg"  type="date" name="start_date" id="start_date" required>
         <br>
         
         <label for="end_date">End Date:</label>
-        <input type="date" name="end_date" id="end_date" required>
+        <input class="form-control form-control-lg" type="date" name="end_date" id="end_date" required>
         <br>
         
         <button type="submit" class="button">Analyze</button>
     </form>
 
     <?php if (!empty($labels) && !empty($data)): ?>
-        <canvas id="ratingChart" width="800" height="400"></canvas>
+        <canvas id="ratingChart" width="800" height="250"></canvas>
         <script>
             var ctx = document.getElementById('ratingChart').getContext('2d');
             var labels = <?php echo json_encode($labels); ?>;
@@ -81,7 +83,9 @@ $vendors = $conn->query($vendorQuery);
                 options: {
                     scales: {
                         y: {
-                            beginAtZero: false
+                            beginAtZero: false,
+                            max: 5,
+                            min: 0
                         }
                     }
                 }
