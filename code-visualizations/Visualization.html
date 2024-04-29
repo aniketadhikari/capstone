@@ -1,0 +1,1768 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>MCCS - Dashboard Visualization Mockup</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">MCCS</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="http://54.167.103.74/welcome.php" rel="" target="">
+ <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./INV_eda.html" rel="" target="">
+ <span class="menu-text">Inventory Adjustment Analysis - EDA</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./Visualization plot.html" rel="" target="">
+ <span class="menu-text">Visualizations</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./Capstone_shrinkage_filtering_visual.html" rel="" target="">
+ <span class="menu-text">Shrinkage Filtering Visualizations</span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools ms-auto">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#sales-trend-plot" id="toc-sales-trend-plot" class="nav-link active" data-scroll-target="#sales-trend-plot">Sales Trend Plot</a></li>
+  <li><a href="#sales-by-location" id="toc-sales-by-location" class="nav-link" data-scroll-target="#sales-by-location">Sales by Location</a></li>
+  <li><a href="#sales-by-department" id="toc-sales-by-department" class="nav-link" data-scroll-target="#sales-by-department">Sales by Department</a></li>
+  <li><a href="#inventory-management" id="toc-inventory-management" class="nav-link" data-scroll-target="#inventory-management">Inventory Management</a></li>
+  <li><a href="#turnover-rate" id="toc-turnover-rate" class="nav-link" data-scroll-target="#turnover-rate">Turnover Rate</a></li>
+  <li><a href="#price-adjustment-impact" id="toc-price-adjustment-impact" class="nav-link" data-scroll-target="#price-adjustment-impact">Price Adjustment Impact</a></li>
+  <li><a href="#implementation-python-codes" id="toc-implementation-python-codes" class="nav-link" data-scroll-target="#implementation-python-codes">Implementation Python Codes</a></li>
+  <li><a href="#import-python-packages" id="toc-import-python-packages" class="nav-link" data-scroll-target="#import-python-packages">Import python packages</a></li>
+  <li><a href="#read-data-we-partitioned-the-original-data-to-focus-on-2022-to-2024." id="toc-read-data-we-partitioned-the-original-data-to-focus-on-2022-to-2024." class="nav-link" data-scroll-target="#read-data-we-partitioned-the-original-data-to-focus-on-2022-to-2024.">Read data (We partitioned the original data to focus on 2022 to 2024.)</a>
+  <ul class="collapse">
+  <li><a href="#snapshot-of-the-data" id="toc-snapshot-of-the-data" class="nav-link" data-scroll-target="#snapshot-of-the-data">Snapshot of the data</a></li>
+  </ul></li>
+  <li><a href="#data-description" id="toc-data-description" class="nav-link" data-scroll-target="#data-description">Data description</a>
+  <ul class="collapse">
+  <li><a href="#number-of-rows-and-columns" id="toc-number-of-rows-and-columns" class="nav-link" data-scroll-target="#number-of-rows-and-columns">Number of rows and columns</a></li>
+  <li><a href="#column-names" id="toc-column-names" class="nav-link" data-scroll-target="#column-names">Column names</a></li>
+  <li><a href="#summary-statistics-for-non-categorical-columns" id="toc-summary-statistics-for-non-categorical-columns" class="nav-link" data-scroll-target="#summary-statistics-for-non-categorical-columns">Summary statistics for non-categorical columns</a></li>
+  </ul></li>
+  <li><a href="#dashboard-visualization-mockup" id="toc-dashboard-visualization-mockup" class="nav-link" data-scroll-target="#dashboard-visualization-mockup">Dashboard visualization mockup</a>
+  <ul class="collapse">
+  <li><a href="#sales-trend-over-time" id="toc-sales-trend-over-time" class="nav-link" data-scroll-target="#sales-trend-over-time">Sales Trend Over Time</a>
+  <ul class="collapse">
+  <li><a href="#snapshot-of-the-columns-related-to-sales" id="toc-snapshot-of-the-columns-related-to-sales" class="nav-link" data-scroll-target="#snapshot-of-the-columns-related-to-sales">Snapshot of the columns related to sales</a></li>
+  <li><a href="#sales-trend-plot-1" id="toc-sales-trend-plot-1" class="nav-link" data-scroll-target="#sales-trend-plot-1">Sales trend plot</a></li>
+  </ul></li>
+  <li><a href="#sales-by-location-1" id="toc-sales-by-location-1" class="nav-link" data-scroll-target="#sales-by-location-1">Sales by Location</a></li>
+  <li><a href="#opening-vs.-closing-inventory" id="toc-opening-vs.-closing-inventory" class="nav-link" data-scroll-target="#opening-vs.-closing-inventory">Opening vs.&nbsp;Closing Inventory</a></li>
+  <li><a href="#inventory-receipts-and-returns" id="toc-inventory-receipts-and-returns" class="nav-link" data-scroll-target="#inventory-receipts-and-returns">Inventory Receipts and Returns</a></li>
+  <li><a href="#impact-of-pricing-adjustment-on-sales" id="toc-impact-of-pricing-adjustment-on-sales" class="nav-link" data-scroll-target="#impact-of-pricing-adjustment-on-sales">Impact of Pricing Adjustment on Sales</a>
+  <ul class="collapse">
+  <li><a href="#data-snapshot" id="toc-data-snapshot" class="nav-link" data-scroll-target="#data-snapshot">Data snapshot</a></li>
+  </ul></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Dashboard Visualization Mockup</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="sales-trend-plot" class="level2">
+<h2 class="anchored" data-anchor-id="sales-trend-plot">Sales Trend Plot</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Visualization_files/figure-html/39e5da80-1-Sales Cost.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Sales%20Cost.png</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Visualization_files/figure-html/3d33a3ad-1-Sales Rev.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Sales%20Rev.png</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Visualization_files/figure-html/6e164bd6-1-Sales Unit.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Sales%20Unit.png</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Visualization_files/figure-html/4f475900-1-Sales Cost and Rev.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Sales%20Cost%20and%20Rev.png</figcaption>
+</figure>
+</div>
+</section>
+<section id="sales-by-location" class="level2">
+<h2 class="anchored" data-anchor-id="sales-by-location">Sales by Location</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Visualization_files/figure-html/556d5c4e-1-Sales Cost Location.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Sales%20Cost%20Location.png</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Visualization_files/figure-html/49b109a1-1-Sales Rev Location.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Sales%20Rev%20Location.png</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Visualization_files/figure-html/a0301887-1-Sales Unit Location.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Sales%20Unit%20Location.png</figcaption>
+</figure>
+</div>
+</section>
+<section id="sales-by-department" class="level2">
+<h2 class="anchored" data-anchor-id="sales-by-department">Sales by Department</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Visualization_files/figure-html/42284f56-1-Sales Cost Dept.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Sales%20Cost%20Dept.png</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Visualization_files/figure-html/266d1c5d-1-Sales Rev Dept.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Sales%20Rev%20Dept.png</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Visualization_files/figure-html/7b6b315e-1-Sales Unit Dept.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Sales%20Unit%20Dept.png</figcaption>
+</figure>
+</div>
+</section>
+<section id="inventory-management" class="level2">
+<h2 class="anchored" data-anchor-id="inventory-management">Inventory Management</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Visualization_files/figure-html/92a3fcd3-1-Inv Cost.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Inv%20Cost.png</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Visualization_files/figure-html/844f79c7-1-Inv Rev.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Inv%20Rev.png</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Visualization_files/figure-html/2bfeb80e-1-Inv Unit.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Inv%20Unit.png</figcaption>
+</figure>
+</div>
+</section>
+<section id="turnover-rate" class="level2">
+<h2 class="anchored" data-anchor-id="turnover-rate">Turnover Rate</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Visualization_files/figure-html/ae273f82-1-Turn over.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Turn%20over.png</figcaption>
+</figure>
+</div>
+</section>
+<section id="price-adjustment-impact" class="level2">
+<h2 class="anchored" data-anchor-id="price-adjustment-impact">Price Adjustment Impact</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Visualization_files/figure-html/67350078-1-Price.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Price.png</figcaption>
+</figure>
+</div>
+<hr>
+</section>
+<section id="implementation-python-codes" class="level1">
+<h1>Implementation Python Codes</h1>
+</section>
+<section id="import-python-packages" class="level1">
+<h1>Import python packages</h1>
+<div class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="read-data-we-partitioned-the-original-data-to-focus-on-2022-to-2024." class="level1">
+<h1>Read data (We partitioned the original data to focus on 2022 to 2024.)</h1>
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>file_path <span class="op">=</span> <span class="st">"DoD_data/KPI_2022_to_2024.csv"</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(file_path)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="snapshot-of-the-data" class="level3">
+<h3 class="anchored" data-anchor-id="snapshot-of-the-data">Snapshot of the data</h3>
+<div class="cell" data-scrolled="true" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">MERCHANDISING_YEAR</th>
+<th data-quarto-table-cell-role="th">MERCHANDISING_PERIOD</th>
+<th data-quarto-table-cell-role="th">FISCAL_PERIOD_DATE</th>
+<th data-quarto-table-cell-role="th">LOCATION_SKEY</th>
+<th data-quarto-table-cell-role="th">OPENINVC</th>
+<th data-quarto-table-cell-role="th">OPENINVR</th>
+<th data-quarto-table-cell-role="th">OPENINVU</th>
+<th data-quarto-table-cell-role="th">CLOSEC</th>
+<th data-quarto-table-cell-role="th">CLOSER</th>
+<th data-quarto-table-cell-role="th">CLOSEU</th>
+<th data-quarto-table-cell-role="th">...</th>
+<th data-quarto-table-cell-role="th">XFERR</th>
+<th data-quarto-table-cell-role="th">XFERU</th>
+<th data-quarto-table-cell-role="th">MARKDOWN</th>
+<th data-quarto-table-cell-role="th">MARKUP</th>
+<th data-quarto-table-cell-role="th">POSMARKD</th>
+<th data-quarto-table-cell-role="th">MD</th>
+<th data-quarto-table-cell-role="th">DEPARTMENT_ID</th>
+<th data-quarto-table-cell-role="th">SHRINKPA</th>
+<th data-quarto-table-cell-role="th">SHRINKSA</th>
+<th data-quarto-table-cell-role="th">SHRINKPROV</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>2022</td>
+<td>1</td>
+<td>2022-01-01</td>
+<td>6216</td>
+<td>1.18</td>
+<td>0.92</td>
+<td>1.0</td>
+<td>25.44</td>
+<td>21.58</td>
+<td>20.0</td>
+<td>...</td>
+<td>0.00</td>
+<td>0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.00</td>
+<td>0.00</td>
+<td>834</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.05</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>2022</td>
+<td>1</td>
+<td>2022-01-01</td>
+<td>6200</td>
+<td>0.00</td>
+<td>0.00</td>
+<td>0.0</td>
+<td>0.00</td>
+<td>0.00</td>
+<td>0.0</td>
+<td>...</td>
+<td>0.00</td>
+<td>0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.00</td>
+<td>0.00</td>
+<td>811</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.00</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>2022</td>
+<td>1</td>
+<td>2022-01-01</td>
+<td>6237</td>
+<td>0.00</td>
+<td>0.00</td>
+<td>0.0</td>
+<td>3.76</td>
+<td>4.97</td>
+<td>3.0</td>
+<td>...</td>
+<td>0.00</td>
+<td>0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.00</td>
+<td>0.00</td>
+<td>834</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.10</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>2022</td>
+<td>1</td>
+<td>2022-01-01</td>
+<td>6223</td>
+<td>21913.31</td>
+<td>27375.73</td>
+<td>18529.0</td>
+<td>14369.56</td>
+<td>16970.51</td>
+<td>13180.0</td>
+<td>...</td>
+<td>1477.96</td>
+<td>4440</td>
+<td>0.0</td>
+<td>16.7</td>
+<td>310.37</td>
+<td>293.67</td>
+<td>28</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>191.82</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>2022</td>
+<td>1</td>
+<td>2022-01-01</td>
+<td>6271</td>
+<td>0.00</td>
+<td>0.00</td>
+<td>0.0</td>
+<td>0.00</td>
+<td>0.00</td>
+<td>0.0</td>
+<td>...</td>
+<td>0.00</td>
+<td>0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.00</td>
+<td>0.00</td>
+<td>499</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.00</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">125524</td>
+<td>2023</td>
+<td>12</td>
+<td>2023-12-01</td>
+<td>6274</td>
+<td>0.00</td>
+<td>0.00</td>
+<td>0.0</td>
+<td>0.00</td>
+<td>0.00</td>
+<td>0.0</td>
+<td>...</td>
+<td>0.00</td>
+<td>0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.00</td>
+<td>0.00</td>
+<td>637</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.00</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">125525</td>
+<td>2023</td>
+<td>12</td>
+<td>2023-12-01</td>
+<td>6225</td>
+<td>0.00</td>
+<td>0.00</td>
+<td>0.0</td>
+<td>0.00</td>
+<td>0.00</td>
+<td>0.0</td>
+<td>...</td>
+<td>0.00</td>
+<td>0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.00</td>
+<td>0.00</td>
+<td>515</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.00</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">125526</td>
+<td>2024</td>
+<td>1</td>
+<td>2024-01-01</td>
+<td>94864</td>
+<td>0.00</td>
+<td>0.00</td>
+<td>0.0</td>
+<td>0.00</td>
+<td>0.00</td>
+<td>0.0</td>
+<td>...</td>
+<td>0.00</td>
+<td>0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.00</td>
+<td>0.00</td>
+<td>973</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.00</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">125527</td>
+<td>2024</td>
+<td>1</td>
+<td>2024-01-01</td>
+<td>6210</td>
+<td>0.00</td>
+<td>0.00</td>
+<td>0.0</td>
+<td>0.00</td>
+<td>0.00</td>
+<td>0.0</td>
+<td>...</td>
+<td>195.84</td>
+<td>16</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.00</td>
+<td>0.00</td>
+<td>360</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.00</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">125528</td>
+<td>2024</td>
+<td>1</td>
+<td>2024-01-01</td>
+<td>152348</td>
+<td>0.00</td>
+<td>0.00</td>
+<td>0.0</td>
+<td>0.00</td>
+<td>0.00</td>
+<td>0.0</td>
+<td>...</td>
+<td>521.76</td>
+<td>24</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.00</td>
+<td>0.00</td>
+<td>520</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.00</td>
+</tr>
+</tbody>
+</table>
+
+<p>125529 rows × 27 columns</p>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="data-description" class="level1">
+<h1>Data description</h1>
+<section id="number-of-rows-and-columns" class="level3">
+<h3 class="anchored" data-anchor-id="number-of-rows-and-columns">Number of rows and columns</h3>
+<div class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>df.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
+<pre><code>(125529, 27)</code></pre>
+</div>
+</div>
+</section>
+<section id="column-names" class="level3">
+<h3 class="anchored" data-anchor-id="column-names">Column names</h3>
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>df.columns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="5">
+<pre><code>Index(['MERCHANDISING_YEAR', 'MERCHANDISING_PERIOD', 'FISCAL_PERIOD_DATE',
+       'LOCATION_SKEY', 'OPENINVC', 'OPENINVR', 'OPENINVU', 'CLOSEC', 'CLOSER',
+       'CLOSEU', 'RECEIPTC', 'RECEIPTR', 'RECEIPTU', 'SALESC', 'SALESR',
+       'SALESU', 'XFERC', 'XFERR', 'XFERU', 'MARKDOWN', 'MARKUP', 'POSMARKD',
+       'MD', 'DEPARTMENT_ID', 'SHRINKPA', 'SHRINKSA', 'SHRINKPROV'],
+      dtype='object')</code></pre>
+</div>
+</div>
+</section>
+<section id="summary-statistics-for-non-categorical-columns" class="level3">
+<h3 class="anchored" data-anchor-id="summary-statistics-for-non-categorical-columns">Summary statistics for non-categorical columns</h3>
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>df.describe()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="5">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">MERCHANDISING_YEAR</th>
+<th data-quarto-table-cell-role="th">MERCHANDISING_PERIOD</th>
+<th data-quarto-table-cell-role="th">LOCATION_SKEY</th>
+<th data-quarto-table-cell-role="th">OPENINVC</th>
+<th data-quarto-table-cell-role="th">OPENINVR</th>
+<th data-quarto-table-cell-role="th">OPENINVU</th>
+<th data-quarto-table-cell-role="th">CLOSEC</th>
+<th data-quarto-table-cell-role="th">CLOSER</th>
+<th data-quarto-table-cell-role="th">CLOSEU</th>
+<th data-quarto-table-cell-role="th">RECEIPTC</th>
+<th data-quarto-table-cell-role="th">...</th>
+<th data-quarto-table-cell-role="th">XFERR</th>
+<th data-quarto-table-cell-role="th">XFERU</th>
+<th data-quarto-table-cell-role="th">MARKDOWN</th>
+<th data-quarto-table-cell-role="th">MARKUP</th>
+<th data-quarto-table-cell-role="th">POSMARKD</th>
+<th data-quarto-table-cell-role="th">MD</th>
+<th data-quarto-table-cell-role="th">DEPARTMENT_ID</th>
+<th data-quarto-table-cell-role="th">SHRINKPA</th>
+<th data-quarto-table-cell-role="th">SHRINKSA</th>
+<th data-quarto-table-cell-role="th">SHRINKPROV</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">count</td>
+<td>125529.000000</td>
+<td>125529.000000</td>
+<td>125529.00000</td>
+<td>1.255290e+05</td>
+<td>1.255290e+05</td>
+<td>125529.000000</td>
+<td>1.255290e+05</td>
+<td>1.255290e+05</td>
+<td>125529.000000</td>
+<td>1.255290e+05</td>
+<td>...</td>
+<td>1.255290e+05</td>
+<td>125529.000000</td>
+<td>125529.000000</td>
+<td>125529.000000</td>
+<td>125529.000000</td>
+<td>125529.000000</td>
+<td>125529.000000</td>
+<td>125529.000000</td>
+<td>1.255290e+05</td>
+<td>125529.000000</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">mean</td>
+<td>2022.506528</td>
+<td>6.492731</td>
+<td>17932.66552</td>
+<td>5.305186e+03</td>
+<td>8.170207e+03</td>
+<td>830.195208</td>
+<td>5.114069e+03</td>
+<td>7.878011e+03</td>
+<td>801.057064</td>
+<td>1.704837e+03</td>
+<td>...</td>
+<td>-6.971319e+01</td>
+<td>-1.177338</td>
+<td>60.850363</td>
+<td>26.354897</td>
+<td>132.290639</td>
+<td>166.786105</td>
+<td>682.568012</td>
+<td>-5.294758</td>
+<td>4.157660e+01</td>
+<td>20.021673</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">std</td>
+<td>0.505127</td>
+<td>3.460919</td>
+<td>38578.27866</td>
+<td>3.058127e+04</td>
+<td>4.613188e+04</td>
+<td>10045.090694</td>
+<td>2.998408e+04</td>
+<td>4.505313e+04</td>
+<td>9785.957014</td>
+<td>2.339116e+04</td>
+<td>...</td>
+<td>2.900343e+04</td>
+<td>3352.794752</td>
+<td>676.644105</td>
+<td>1070.279287</td>
+<td>1310.064290</td>
+<td>1947.992570</td>
+<td>513.695212</td>
+<td>301.887490</td>
+<td>1.695152e+04</td>
+<td>114.338894</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">min</td>
+<td>2022.000000</td>
+<td>1.000000</td>
+<td>6138.00000</td>
+<td>-4.998492e+05</td>
+<td>-1.016312e+06</td>
+<td>-340547.000000</td>
+<td>-4.998342e+05</td>
+<td>-1.015345e+06</td>
+<td>-340547.000000</td>
+<td>-2.678100e+04</td>
+<td>...</td>
+<td>-2.420662e+06</td>
+<td>-383784.000000</td>
+<td>-26425.750000</td>
+<td>-13167.650000</td>
+<td>-53840.670000</td>
+<td>-342227.400000</td>
+<td>28.000000</td>
+<td>-44382.000000</td>
+<td>-5.978350e+04</td>
+<td>-4.840000</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">25%</td>
+<td>2022.000000</td>
+<td>3.000000</td>
+<td>6197.00000</td>
+<td>0.000000e+00</td>
+<td>0.000000e+00</td>
+<td>0.000000</td>
+<td>0.000000e+00</td>
+<td>0.000000e+00</td>
+<td>0.000000</td>
+<td>0.000000e+00</td>
+<td>...</td>
+<td>0.000000e+00</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>510.000000</td>
+<td>0.000000</td>
+<td>0.000000e+00</td>
+<td>0.000000</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">50%</td>
+<td>2023.000000</td>
+<td>6.000000</td>
+<td>6250.00000</td>
+<td>0.000000e+00</td>
+<td>0.000000e+00</td>
+<td>0.000000</td>
+<td>0.000000e+00</td>
+<td>0.000000e+00</td>
+<td>0.000000</td>
+<td>0.000000e+00</td>
+<td>...</td>
+<td>0.000000e+00</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>636.000000</td>
+<td>0.000000</td>
+<td>0.000000e+00</td>
+<td>0.000000</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">75%</td>
+<td>2023.000000</td>
+<td>10.000000</td>
+<td>6303.00000</td>
+<td>1.579800e+02</td>
+<td>2.477500e+02</td>
+<td>30.000000</td>
+<td>1.040800e+02</td>
+<td>1.617600e+02</td>
+<td>20.000000</td>
+<td>0.000000e+00</td>
+<td>...</td>
+<td>0.000000e+00</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>852.000000</td>
+<td>0.000000</td>
+<td>0.000000e+00</td>
+<td>0.000000</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">max</td>
+<td>2024.000000</td>
+<td>12.000000</td>
+<td>152397.00000</td>
+<td>1.919772e+06</td>
+<td>3.166673e+06</td>
+<td>859716.000000</td>
+<td>1.393764e+06</td>
+<td>2.315081e+06</td>
+<td>863294.000000</td>
+<td>4.280523e+06</td>
+<td>...</td>
+<td>5.783317e+05</td>
+<td>53858.000000</td>
+<td>51155.100000</td>
+<td>342227.400000</td>
+<td>86701.010000</td>
+<td>103292.010000</td>
+<td>8516.000000</td>
+<td>23784.250000</td>
+<td>5.980992e+06</td>
+<td>5823.760000</td>
+</tr>
+</tbody>
+</table>
+
+<p>8 rows × 26 columns</p>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="dashboard-visualization-mockup" class="level1">
+<h1>Dashboard visualization mockup</h1>
+<section id="sales-trend-over-time" class="level2">
+<h2 class="anchored" data-anchor-id="sales-trend-over-time">Sales Trend Over Time</h2>
+<section id="data-kpi" class="level4">
+<h4 class="anchored" data-anchor-id="data-kpi">Data: KPI</h4>
+</section>
+<section id="features-salesc-salesr-salesu-merchandising_year-fiscal_period_date" class="level4">
+<h4 class="anchored" data-anchor-id="features-salesc-salesr-salesu-merchandising_year-fiscal_period_date">Features: SALESC, SALESR, SALESU, MERCHANDISING_YEAR, FISCAL_PERIOD_DATE</h4>
+</section>
+<section id="snapshot-of-the-columns-related-to-sales" class="level3">
+<h3 class="anchored" data-anchor-id="snapshot-of-the-columns-related-to-sales">Snapshot of the columns related to sales</h3>
+<div class="cell" data-execution_count="44">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>df[[<span class="st">'SALESC'</span>, <span class="st">'SALESR'</span>, <span class="st">'SALESU'</span>]].head(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="44">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">SALESC</th>
+<th data-quarto-table-cell-role="th">SALESR</th>
+<th data-quarto-table-cell-role="th">SALESU</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>6.40</td>
+<td>5.45</td>
+<td>5</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>0.00</td>
+<td>0.00</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>7.68</td>
+<td>10.14</td>
+<td>6</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>15771.97</td>
+<td>19182.57</td>
+<td>13701</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>0.00</td>
+<td>0.00</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">5</td>
+<td>129.04</td>
+<td>232.48</td>
+<td>32</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">6</td>
+<td>0.00</td>
+<td>0.00</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">7</td>
+<td>0.00</td>
+<td>0.00</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">8</td>
+<td>30.15</td>
+<td>68.91</td>
+<td>12</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">9</td>
+<td>0.00</td>
+<td>0.00</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>feature <span class="op">=</span> <span class="st">'SALESC'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>feature <span class="op">=</span> <span class="st">'SALESR'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>feature <span class="op">=</span> <span class="st">'SALESU'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>cat <span class="op">=</span> <span class="st">"FISCAL_PERIOD_DATE"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="sales-trend-plot-1" class="level3">
+<h3 class="anchored" data-anchor-id="sales-trend-plot-1">Sales trend plot</h3>
+<div class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the line chart</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>plt.plot(df.groupby(cat)[feature].mean())</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Add title and labels</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>plt.title(feature <span class="op">+</span> <span class="st">' to '</span> <span class="op">+</span> cat <span class="op">+</span> <span class="st">' line chart'</span>)</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>plt.xlabel(cat)</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>plt.ylabel(feature)</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="st">'vertical'</span>)</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">'Sales Unit.png'</span>)</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the plot</span></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Visualization_files/figure-html/cell-13-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the line chart</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>plt.plot(df.groupby(cat)[<span class="st">'SALESC'</span>].mean(), label<span class="op">=</span><span class="st">'SALESC'</span>)</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>plt.plot(df.groupby(cat)[<span class="st">'SALESR'</span>].mean(), label<span class="op">=</span><span class="st">'SALESR'</span>)</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Add title and labels</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Sales to '</span> <span class="op">+</span> cat <span class="op">+</span> <span class="st">' line chart'</span>)</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>plt.xlabel(cat)</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Sales"</span>)</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="st">'vertical'</span>)</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">'Sales Cost and Rev.png'</span>)</span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the plot</span></span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Visualization_files/figure-html/cell-14-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="sales-by-location-1" class="level2">
+<h2 class="anchored" data-anchor-id="sales-by-location-1">Sales by Location</h2>
+<section id="dataset-kpi" class="level4">
+<h4 class="anchored" data-anchor-id="dataset-kpi">Dataset: KPI</h4>
+</section>
+<section id="features-location_skey-department_id-salesc-salesr-salesu" class="level4">
+<h4 class="anchored" data-anchor-id="features-location_skey-department_id-salesc-salesr-salesu">Features: LOCATION_SKEY, DEPARTMENT_ID, SALESC, SALESR, SALESU</h4>
+<div class="cell" data-execution_count="38">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>feature <span class="op">=</span> <span class="st">'SALESC'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="44">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>feature <span class="op">=</span> <span class="st">'SALESR'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="49">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>feature <span class="op">=</span> <span class="st">'SALESU'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>cat <span class="op">=</span> <span class="st">'LOCATION_SKEY'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="39">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>cat <span class="op">=</span> <span class="st">'DEPARTMENT_ID'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="50">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>grouped_df <span class="op">=</span> df.groupby(cat)[feature].<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="drop-locations-whose-sales-attributes-are-zero" class="level4">
+<h4 class="anchored" data-anchor-id="drop-locations-whose-sales-attributes-are-zero">Drop locations whose sales attributes are zero</h4>
+<div class="cell" data-execution_count="51">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> grouped_df[grouped_df<span class="op">!=</span><span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="extract-top-10-stores-and-bottom-10-locations-and-department" class="level4">
+<h4 class="anchored" data-anchor-id="extract-top-10-stores-and-bottom-10-locations-and-department">Extract top 10 stores and bottom 10 locations and department</h4>
+<div class="cell" data-execution_count="52">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>sorted_data <span class="op">=</span> data.sort_values()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="37">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>sorted_data[<span class="op">-</span><span class="dv">10</span>:].plot(kind<span class="op">=</span><span class="st">'bar'</span>, color<span class="op">=</span><span class="st">'skyblue'</span>)</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>plt.xlabel(cat)</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>plt.ylabel(feature)</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>plt.title(feature <span class="op">+</span> <span class="st">' by '</span> <span class="op">+</span> cat <span class="op">+</span> <span class="st">' (top 10)'</span>)</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="st">'vertical'</span>)</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">'Sales Unit Location.png'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Visualization_files/figure-html/cell-23-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell" data-execution_count="53">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>sorted_data[:<span class="dv">10</span>].plot(kind<span class="op">=</span><span class="st">'bar'</span>, color<span class="op">=</span><span class="st">'skyblue'</span>)</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>plt.xlabel(cat)</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>plt.ylabel(feature)</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>plt.title(feature <span class="op">+</span> <span class="st">' by '</span> <span class="op">+</span> cat <span class="op">+</span> <span class="st">' (bottom 10)'</span>)</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="st">'vertical'</span>)</span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">'Sales Unit Dept.png'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Visualization_files/figure-html/cell-24-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="opening-vs.-closing-inventory" class="level2">
+<h2 class="anchored" data-anchor-id="opening-vs.-closing-inventory">Opening vs.&nbsp;Closing Inventory</h2>
+<section id="data-kpi-1" class="level4">
+<h4 class="anchored" data-anchor-id="data-kpi-1">data: KPI</h4>
+</section>
+<section id="features-openinvc-openinvr-openinvu-closec-closer-closeu-fiscal_period_date" class="level4">
+<h4 class="anchored" data-anchor-id="features-openinvc-openinvr-openinvu-closec-closer-closeu-fiscal_period_date">features: OPENINVC, OPENINVR, OPENINVU, CLOSEC, CLOSER, CLOSEU, FISCAL_PERIOD_DATE</h4>
+<div class="cell" data-execution_count="54">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>feature_1, feature_2, cat <span class="op">=</span> <span class="st">'OPENINVC'</span>, <span class="st">'CLOSEC'</span>, <span class="st">'FISCAL_PERIOD_DATE'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="58">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>feature_1, feature_2, cat <span class="op">=</span> <span class="st">'OPENINVR'</span>, <span class="st">'CLOSER'</span>, <span class="st">'FISCAL_PERIOD_DATE'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="62">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>feature_1, feature_2, cat <span class="op">=</span> <span class="st">'OPENINVU'</span>, <span class="st">'CLOSEU'</span>, <span class="st">'FISCAL_PERIOD_DATE'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="63">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> df[[feature_1, feature_2, cat]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="64">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>grouped_df <span class="op">=</span> data.groupby(cat).<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="65">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>grouped_df.plot(kind<span class="op">=</span><span class="st">'bar'</span>, stacked<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>plt.xlabel(cat)</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Value"</span>)</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Stacked Bar Chart'</span>)</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>rotation<span class="op">=</span><span class="st">'vertical'</span>  <span class="co"># Rotate x-axis labels if needed</span></span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>plt.legend(title<span class="op">=</span><span class="st">'Values'</span>)  <span class="co"># Add legend with title</span></span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">'Inv Unit.png'</span>)</span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>&lt;Figure size 1000x600 with 0 Axes&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="Visualization_files/figure-html/cell-30-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="inventory-receipts-and-returns" class="level2">
+<h2 class="anchored" data-anchor-id="inventory-receipts-and-returns">Inventory Receipts and Returns</h2>
+<section id="data-kpi-2" class="level4">
+<h4 class="anchored" data-anchor-id="data-kpi-2">data: KPI</h4>
+</section>
+<section id="features-openinvc-closec-salesc-fiscal_period_date" class="level4">
+<h4 class="anchored" data-anchor-id="features-openinvc-closec-salesc-fiscal_period_date">features: OPENINVC, CLOSEC, SALESC, FISCAL_PERIOD_DATE</h4>
+<div class="cell" data-execution_count="66">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> df[[<span class="st">'OPENINVC'</span>, <span class="st">'CLOSEC'</span>, <span class="st">'SALESC'</span>, <span class="st">'FISCAL_PERIOD_DATE'</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="67">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>grouped_df <span class="op">=</span> data.groupby(cat).<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="drop-the-last-two-periods-due-to-zero-values" class="level4">
+<h4 class="anchored" data-anchor-id="drop-the-last-two-periods-due-to-zero-values">Drop the last two periods due to zero values</h4>
+<div class="cell" data-execution_count="68">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>grouped_df <span class="op">=</span> grouped_df[:<span class="op">-</span><span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="69">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>grouped_df[<span class="st">'AVG_INV'</span>] <span class="op">=</span> (grouped_df[<span class="st">'OPENINVC'</span>] <span class="op">+</span> grouped_df[<span class="st">'CLOSEC'</span>])<span class="op">/</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="70">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>grouped_df[<span class="st">'TURNOVER_RATE'</span>] <span class="op">=</span> grouped_df[<span class="st">'SALESC'</span>] <span class="op">/</span> grouped_df[<span class="st">'AVG_INV'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="71">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>plt.plot(grouped_df[<span class="st">'TURNOVER_RATE'</span>])</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Add title and labels</span></span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Turnover rate'</span>)</span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Turnover rate'</span>)</span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"period"</span>)</span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="st">'vertical'</span>)</span>
+<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">'Turn over.png'</span>)</span>
+<span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-11"><a href="#cb38-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the plot</span></span>
+<span id="cb38-12"><a href="#cb38-12" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Visualization_files/figure-html/cell-36-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="impact-of-pricing-adjustment-on-sales" class="level2">
+<h2 class="anchored" data-anchor-id="impact-of-pricing-adjustment-on-sales">Impact of Pricing Adjustment on Sales</h2>
+<section id="data-kpi-3" class="level4">
+<h4 class="anchored" data-anchor-id="data-kpi-3">data: KPI</h4>
+<p>Features: MARKDOWN, MARKUP, POSMARKD, MD, FISCAL_PERIOD_DATE, SALESC</p>
+<div class="cell" data-execution_count="72">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> df[[<span class="st">'MARKDOWN'</span>, <span class="st">'MARKUP'</span>, <span class="st">'POSMARKD'</span>, <span class="st">'MD'</span>, <span class="st">'SALESC'</span>, <span class="st">'FISCAL_PERIOD_DATE'</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="73">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>data[<span class="st">'COUNT_MARK'</span>] <span class="op">=</span> (data[<span class="st">'MARKDOWN'</span>] <span class="op">!=</span> <span class="dv">0</span>) <span class="op">|</span> (df[<span class="st">'MARKUP'</span>] <span class="op">!=</span> <span class="dv">0</span>)</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>data[<span class="st">'COUNT_MARK'</span>] <span class="op">=</span> data[<span class="st">'COUNT_MARK'</span>].astype(<span class="bu">int</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/var/folders/lb/vv79n0s57yzd8ks6lk4lnp9w0000gn/T/ipykernel_54121/1734660132.py:1: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  data['COUNT_MARK'] = (data['MARKDOWN'] != 0) | (df['MARKUP'] != 0)
+/var/folders/lb/vv79n0s57yzd8ks6lk4lnp9w0000gn/T/ipykernel_54121/1734660132.py:2: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  data['COUNT_MARK'] = data['COUNT_MARK'].astype(int)</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="74">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>grouped_df <span class="op">=</span> data.groupby(<span class="st">'FISCAL_PERIOD_DATE'</span>).<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="data-snapshot" class="level3">
+<h3 class="anchored" data-anchor-id="data-snapshot">Data snapshot</h3>
+<div class="cell" data-execution_count="133">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>grouped_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="133">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">MARKDOWN</th>
+<th data-quarto-table-cell-role="th">MARKUP</th>
+<th data-quarto-table-cell-role="th">POSMARKD</th>
+<th data-quarto-table-cell-role="th">MD</th>
+<th data-quarto-table-cell-role="th">SALESC</th>
+<th data-quarto-table-cell-role="th">COUNT_MARK</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">FISCAL_PERIOD_DATE</th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2022-01-01</td>
+<td>270816.64</td>
+<td>188185.00</td>
+<td>342711.47</td>
+<td>425343.11</td>
+<td>6167692.30</td>
+<td>797</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">2022-02-01</td>
+<td>228246.58</td>
+<td>211915.63</td>
+<td>366062.31</td>
+<td>382393.26</td>
+<td>8852171.36</td>
+<td>836</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2022-03-01</td>
+<td>186539.05</td>
+<td>141470.81</td>
+<td>460601.18</td>
+<td>505669.42</td>
+<td>7422253.35</td>
+<td>686</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">2022-04-01</td>
+<td>203924.57</td>
+<td>287687.18</td>
+<td>493621.13</td>
+<td>409858.52</td>
+<td>6895631.65</td>
+<td>813</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2022-05-01</td>
+<td>180301.04</td>
+<td>188150.19</td>
+<td>735237.51</td>
+<td>727388.36</td>
+<td>8303888.01</td>
+<td>774</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">2022-06-01</td>
+<td>334733.75</td>
+<td>191982.38</td>
+<td>409797.31</td>
+<td>552548.68</td>
+<td>7204093.67</td>
+<td>713</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2022-07-01</td>
+<td>404632.95</td>
+<td>150814.51</td>
+<td>491255.00</td>
+<td>745073.44</td>
+<td>6910725.08</td>
+<td>754</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">2022-08-01</td>
+<td>474976.34</td>
+<td>139039.57</td>
+<td>718932.35</td>
+<td>1054869.12</td>
+<td>8882814.73</td>
+<td>734</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2022-09-01</td>
+<td>556995.57</td>
+<td>66678.09</td>
+<td>646339.12</td>
+<td>1136656.60</td>
+<td>8896409.87</td>
+<td>669</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">2022-10-01</td>
+<td>373215.48</td>
+<td>108055.98</td>
+<td>1164213.60</td>
+<td>1429373.10</td>
+<td>8119589.21</td>
+<td>675</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2022-11-01</td>
+<td>372354.42</td>
+<td>93212.55</td>
+<td>1656458.45</td>
+<td>1935600.32</td>
+<td>10471510.28</td>
+<td>587</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">2022-12-01</td>
+<td>359476.91</td>
+<td>135253.30</td>
+<td>375593.23</td>
+<td>599816.84</td>
+<td>5632579.94</td>
+<td>592</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2023-01-01</td>
+<td>481099.58</td>
+<td>194241.34</td>
+<td>472997.11</td>
+<td>759855.35</td>
+<td>7296639.42</td>
+<td>711</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">2023-02-01</td>
+<td>399870.90</td>
+<td>227727.73</td>
+<td>630085.93</td>
+<td>802229.10</td>
+<td>9724129.13</td>
+<td>778</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2023-03-01</td>
+<td>276057.35</td>
+<td>57307.96</td>
+<td>607011.03</td>
+<td>825760.42</td>
+<td>8400685.92</td>
+<td>605</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">2023-04-01</td>
+<td>222919.20</td>
+<td>34074.58</td>
+<td>542075.49</td>
+<td>730920.11</td>
+<td>6957326.15</td>
+<td>618</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2023-05-01</td>
+<td>261998.53</td>
+<td>473638.46</td>
+<td>919976.47</td>
+<td>708336.54</td>
+<td>9863320.75</td>
+<td>685</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">2023-06-01</td>
+<td>313672.53</td>
+<td>87417.03</td>
+<td>559721.71</td>
+<td>785977.21</td>
+<td>8087189.80</td>
+<td>638</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2023-07-01</td>
+<td>341883.60</td>
+<td>82614.28</td>
+<td>653461.41</td>
+<td>912730.73</td>
+<td>7828669.64</td>
+<td>724</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">2023-08-01</td>
+<td>390354.80</td>
+<td>105696.34</td>
+<td>692034.79</td>
+<td>976693.25</td>
+<td>9664694.62</td>
+<td>618</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2023-09-01</td>
+<td>468731.35</td>
+<td>48985.18</td>
+<td>555979.60</td>
+<td>975725.77</td>
+<td>7020276.29</td>
+<td>623</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">2023-10-01</td>
+<td>255866.49</td>
+<td>47986.49</td>
+<td>1446716.44</td>
+<td>1654596.44</td>
+<td>9464401.60</td>
+<td>568</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2023-11-01</td>
+<td>279814.22</td>
+<td>46169.26</td>
+<td>1665428.97</td>
+<td>1899073.93</td>
+<td>11166118.53</td>
+<td>613</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">2023-12-01</td>
+<td>2.02</td>
+<td>0.00</td>
+<td>0.00</td>
+<td>2.02</td>
+<td>0.00</td>
+<td>7</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2024-01-01</td>
+<td>1.32</td>
+<td>0.00</td>
+<td>0.00</td>
+<td>1.32</td>
+<td>0.00</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="75">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a figure and axis object</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>fig, ax1 <span class="op">=</span> plt.subplots()</span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot data for the first y-axis (left)</span></span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>ax1.plot(grouped_df[<span class="st">'SALESC'</span>], color<span class="op">=</span><span class="st">'tab:blue'</span>, label<span class="op">=</span><span class="st">'SALESC'</span>)</span>
+<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a>ax1.set_xlabel(<span class="st">'Period'</span>)</span>
+<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a>ax1.set_ylabel(<span class="st">'Total Sales'</span>, color<span class="op">=</span><span class="st">'tab:blue'</span>)</span>
+<span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="st">'vertical'</span>)</span>
+<span id="cb44-9"><a href="#cb44-9" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb44-10"><a href="#cb44-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-11"><a href="#cb44-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a second y-axis (right) and plot data</span></span>
+<span id="cb44-12"><a href="#cb44-12" aria-hidden="true" tabindex="-1"></a>ax2 <span class="op">=</span> ax1.twinx()</span>
+<span id="cb44-13"><a href="#cb44-13" aria-hidden="true" tabindex="-1"></a>ax2.plot(grouped_df[<span class="st">'COUNT_MARK'</span>], color<span class="op">=</span><span class="st">'tab:red'</span>, label<span class="op">=</span><span class="st">'Number of Price Change'</span>)</span>
+<span id="cb44-14"><a href="#cb44-14" aria-hidden="true" tabindex="-1"></a>ax2.set_ylabel(<span class="st">'Number of Price Change'</span>, color<span class="op">=</span><span class="st">'tab:red'</span>)</span>
+<span id="cb44-15"><a href="#cb44-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-16"><a href="#cb44-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Add title</span></span>
+<span id="cb44-17"><a href="#cb44-17" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Impact of Pricing Adjustments on Sales'</span>)</span>
+<span id="cb44-18"><a href="#cb44-18" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb44-19"><a href="#cb44-19" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="st">'vertical'</span>)</span>
+<span id="cb44-20"><a href="#cb44-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-21"><a href="#cb44-21" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">'Price.png'</span>)</span>
+<span id="cb44-22"><a href="#cb44-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-23"><a href="#cb44-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Show plot</span></span>
+<span id="cb44-24"><a href="#cb44-24" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Visualization_files/figure-html/cell-41-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+
+
+</section>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

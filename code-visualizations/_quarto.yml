@@ -8,7 +8,7 @@ website:
     style: docked
     background: primary
     left:
-      - href: index.qmd
+      - href: http://54.167.103.74/welcome.php
         text: Home
       - href: INV_eda.html
         text: Inventory Adjustment Analysis - EDA
